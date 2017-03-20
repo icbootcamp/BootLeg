@@ -49,6 +49,15 @@
           <Property Name="MobileNumber" Type="varchar" MaxLength="20" />
           <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Descripton" Type="nchar" MaxLength="50" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
         <EntityType Name="Reservation">
           <Key>
             <PropertyRef Name="Id" />
@@ -99,22 +108,31 @@
           <Property Name="SuppplierTypeId" Type="int" Nullable="false" />
           <Property Name="CreditLimit" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="SupplierOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="OrderNumber" Type="nchar" MaxLength="15" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierOrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="SupplierOrderID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="SupplierType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="10" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Table">
           <Key>
@@ -267,20 +285,58 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SupplierOrder_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="SupplierOrder" Type="Self.SupplierOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierOrder">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierOrderDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SupplierOrderDetail" Type="Self.SupplierOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierOrderDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierOrderDetail_SupplierOrder">
+          <End Role="SupplierOrder" Type="Self.SupplierOrder" Multiplicity="1" />
+          <End Role="SupplierOrderDetail" Type="Self.SupplierOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierOrder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierOrderDetail">
+              <PropertyRef Name="SupplierOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BootLegModelStoreContainer">
           <EntitySet Name="Meal" EntityType="Self.Meal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderType" EntityType="Self.OrderType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReservationOrder" EntityType="Self.ReservationOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffPosition" EntityType="Self.StaffPosition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffType" EntityType="Self.StaffType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierOrder" EntityType="Self.SupplierOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierOrderDetail" EntityType="Self.SupplierOrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierType" EntityType="Self.SupplierType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Order_OrderType" Association="Self.FK_Order_OrderType">
             <End Role="OrderType" EntitySet="OrderType" />
@@ -330,6 +386,18 @@
             <End Role="SupplierType" EntitySet="SupplierType" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
+          <AssociationSet Name="FK_SupplierOrder_Supplier" Association="Self.FK_SupplierOrder_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplierOrder" EntitySet="SupplierOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierOrderDetail_Product" Association="Self.FK_SupplierOrderDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SupplierOrderDetail" EntitySet="SupplierOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierOrderDetail_SupplierOrder" Association="Self.FK_SupplierOrderDetail_SupplierOrder">
+            <End Role="SupplierOrder" EntitySet="SupplierOrder" />
+            <End Role="SupplierOrderDetail" EntitySet="SupplierOrderDetail" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -341,14 +409,16 @@
           <EntitySet Name="OrderDetails" EntityType="BootLegModel.OrderDetail" />
           <EntitySet Name="OrderTypes" EntityType="BootLegModel.OrderType" />
           <EntitySet Name="People" EntityType="BootLegModel.Person" />
+          <EntitySet Name="Products" EntityType="BootLegModel.Product" />
           <EntitySet Name="Reservations" EntityType="BootLegModel.Reservation" />
           <EntitySet Name="ReservationOrders" EntityType="BootLegModel.ReservationOrder" />
           <EntitySet Name="Staffs" EntityType="BootLegModel.Staff" />
           <EntitySet Name="StaffPositions" EntityType="BootLegModel.StaffPosition" />
           <EntitySet Name="StaffTypes" EntityType="BootLegModel.StaffType" />
           <EntitySet Name="Suppliers" EntityType="BootLegModel.Supplier" />
+          <EntitySet Name="SupplierOrders" EntityType="BootLegModel.SupplierOrder" />
+          <EntitySet Name="SupplierOrderDetails" EntityType="BootLegModel.SupplierOrderDetail" />
           <EntitySet Name="SupplierTypes" EntityType="BootLegModel.SupplierType" />
-          <EntitySet Name="sysdiagrams" EntityType="BootLegModel.sysdiagram" />
           <EntitySet Name="Tables" EntityType="BootLegModel.Table" />
           <AssociationSet Name="FK_OrderDetail_Meal" Association="BootLegModel.FK_OrderDetail_Meal">
             <End Role="Meal" EntitySet="Meals" />
@@ -378,6 +448,10 @@
             <End Role="Person" EntitySet="People" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
+          <AssociationSet Name="FK_SupplierOrderDetail_Product" Association="BootLegModel.FK_SupplierOrderDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="SupplierOrderDetail" EntitySet="SupplierOrderDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_Reservation_Table" Association="BootLegModel.FK_Reservation_Table">
             <End Role="Table" EntitySet="Tables" />
             <End Role="Reservation" EntitySet="Reservations" />
@@ -397,6 +471,14 @@
           <AssociationSet Name="FK_Supplier_SupplierType" Association="BootLegModel.FK_Supplier_SupplierType">
             <End Role="SupplierType" EntitySet="SupplierTypes" />
             <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierOrder_Supplier" Association="BootLegModel.FK_SupplierOrder_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierOrder" EntitySet="SupplierOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierOrderDetail_SupplierOrder" Association="BootLegModel.FK_SupplierOrderDetail_SupplierOrder">
+            <End Role="SupplierOrder" EntitySet="SupplierOrders" />
+            <End Role="SupplierOrderDetail" EntitySet="SupplierOrderDetails" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Meal">
@@ -452,6 +534,16 @@
           <NavigationProperty Name="Reservations" Relationship="BootLegModel.FK_Reservation_Person" FromRole="Person" ToRole="Reservation" />
           <NavigationProperty Name="Staff" Relationship="BootLegModel.FK_Staff_Person" FromRole="Person" ToRole="Staff" />
           <NavigationProperty Name="Supplier" Relationship="BootLegModel.FK_Supplier_Person" FromRole="Person" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Descripton" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="SupplierOrderDetails" Relationship="BootLegModel.FK_SupplierOrderDetail_Product" FromRole="Product" ToRole="SupplierOrderDetail" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
@@ -514,6 +606,30 @@
           <Property Name="CreditLimit" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <NavigationProperty Name="Person" Relationship="BootLegModel.FK_Supplier_Person" FromRole="Supplier" ToRole="Person" />
           <NavigationProperty Name="SupplierType" Relationship="BootLegModel.FK_Supplier_SupplierType" FromRole="Supplier" ToRole="SupplierType" />
+          <NavigationProperty Name="SupplierOrders" Relationship="BootLegModel.FK_SupplierOrder_Supplier" FromRole="Supplier" ToRole="SupplierOrder" />
+        </EntityType>
+        <EntityType Name="SupplierOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OrderNumber" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="SupplierId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Supplier" Relationship="BootLegModel.FK_SupplierOrder_Supplier" FromRole="SupplierOrder" ToRole="Supplier" />
+          <NavigationProperty Name="SupplierOrderDetails" Relationship="BootLegModel.FK_SupplierOrderDetail_SupplierOrder" FromRole="SupplierOrder" ToRole="SupplierOrderDetail" />
+        </EntityType>
+        <EntityType Name="SupplierOrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="SupplierOrderID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="BootLegModel.FK_SupplierOrderDetail_Product" FromRole="SupplierOrderDetail" ToRole="Product" />
+          <NavigationProperty Name="SupplierOrder" Relationship="BootLegModel.FK_SupplierOrderDetail_SupplierOrder" FromRole="SupplierOrderDetail" ToRole="SupplierOrder" />
         </EntityType>
         <EntityType Name="SupplierType">
           <Key>
@@ -522,16 +638,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Suppliers" Relationship="BootLegModel.FK_Supplier_SupplierType" FromRole="SupplierType" ToRole="Supplier" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Table">
           <Key>
@@ -625,6 +731,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SupplierOrderDetail_Product">
+          <End Type="BootLegModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="BootLegModel.SupplierOrderDetail" Role="SupplierOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierOrderDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Reservation_Table">
           <End Type="BootLegModel.Table" Role="Table" Multiplicity="1" />
           <End Type="BootLegModel.Reservation" Role="Reservation" Multiplicity="*" />
@@ -685,7 +803,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_SupplierOrder_Supplier">
+          <End Type="BootLegModel.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="BootLegModel.SupplierOrder" Role="SupplierOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierOrder">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierOrderDetail_SupplierOrder">
+          <End Type="BootLegModel.SupplierOrder" Role="SupplierOrder" Multiplicity="1" />
+          <End Type="BootLegModel.SupplierOrderDetail" Role="SupplierOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierOrder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierOrderDetail">
+              <PropertyRef Name="SupplierOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -736,6 +878,16 @@
                 <ScalarProperty Name="Address1" ColumnName="Address1" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="BootLegModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Descripton" ColumnName="Descripton" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -796,22 +948,32 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SupplierOrders">
+            <EntityTypeMapping TypeName="BootLegModel.SupplierOrder">
+              <MappingFragment StoreEntitySet="SupplierOrder">
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierOrderDetails">
+            <EntityTypeMapping TypeName="BootLegModel.SupplierOrderDetail">
+              <MappingFragment StoreEntitySet="SupplierOrderDetail">
+                <ScalarProperty Name="SupplierOrderID" ColumnName="SupplierOrderID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SupplierTypes">
             <EntityTypeMapping TypeName="BootLegModel.SupplierType">
               <MappingFragment StoreEntitySet="SupplierType">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="BootLegModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

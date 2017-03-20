@@ -208,6 +208,9 @@
     <Compile Include="Person.cs">
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>BootLegModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reservation.cs">
       <DependentUpon>BootLegModel.tt</DependentUpon>
@@ -228,10 +231,13 @@
     <Compile Include="Supplier.cs">
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SupplierType.cs">
+    <Compile Include="SupplierOrder.cs">
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
+    <Compile Include="SupplierOrderDetail.cs">
+      <DependentUpon>BootLegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierType.cs">
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Table.cs">

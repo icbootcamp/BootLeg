@@ -12,21 +12,20 @@ namespace BootLeg
     using System;
     using System.Collections.Generic;
     
-    public partial class Supplier
+    public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Supplier()
+        public Product()
         {
-            this.SupplierOrders = new HashSet<SupplierOrder>();
+            this.SupplierOrderDetails = new HashSet<SupplierOrderDetail>();
         }
     
         public int Id { get; set; }
-        public int SuppplierTypeId { get; set; }
-        public decimal CreditLimit { get; set; }
+        public string Name { get; set; }
+        public string Descripton { get; set; }
+        public Nullable<decimal> Cost { get; set; }
     
-        public virtual Person Person { get; set; }
-        public virtual SupplierType SupplierType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SupplierOrder> SupplierOrders { get; set; }
+        public virtual ICollection<SupplierOrderDetail> SupplierOrderDetails { get; set; }
     }
 }
