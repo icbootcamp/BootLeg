@@ -25,7 +25,6 @@ namespace BootLeg
         public int TableId { get; set; }
         public System.DateTime SittingTime { get; set; }
         public int PartySize { get; set; }
-        public int OrderId { get; set; }
     
         public virtual Person Person { get; set; }
         public virtual Table Table { get; set; }

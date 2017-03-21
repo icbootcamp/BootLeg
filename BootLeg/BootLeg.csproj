@@ -187,7 +187,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,7 +196,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\SupplierClass1.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
@@ -240,6 +238,9 @@
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SupplierType.cs">
+      <DependentUpon>BootLegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Table.cs">
@@ -320,8 +321,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Supplier\AddSupplier.cshtml" />
-    <Content Include="Views\Supplier\SupplierName.cshtml" />
+    <Content Include="Views\Home\StaffManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

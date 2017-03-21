@@ -5,22 +5,23 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8d1670e1798a48df8717693c183eb70b" Name="Diagram1">
-        <EntityTypeShape EntityType="BootLegModel.Meal" Width="1.5" PointX="5.5" PointY="10.125" />
-        <EntityTypeShape EntityType="BootLegModel.Order" Width="1.5" PointX="5.5" PointY="12.75" />
-        <EntityTypeShape EntityType="BootLegModel.OrderDetail" Width="1.5" PointX="8.25" PointY="10.25" />
-        <EntityTypeShape EntityType="BootLegModel.OrderType" Width="1.5" PointX="3.5" PointY="13.125" />
-        <EntityTypeShape EntityType="BootLegModel.Person" Width="1.5" PointX="0.75" PointY="4.375" />
-        <EntityTypeShape EntityType="BootLegModel.Product" Width="1.5" PointX="8" PointY="3.875" />
-        <EntityTypeShape EntityType="BootLegModel.Reservation" Width="1.5" PointX="6" PointY="4.5" />
-        <EntityTypeShape EntityType="BootLegModel.ReservationOrder" Width="1.5" PointX="8" PointY="7.5" />
-        <EntityTypeShape EntityType="BootLegModel.Staff" Width="1.5" PointX="3" PointY="5" />
-        <EntityTypeShape EntityType="BootLegModel.StaffPosition" Width="1.5" PointX="0.75" PointY="9" />
-        <EntityTypeShape EntityType="BootLegModel.StaffType" Width="1.5" PointX="1.5" PointY="12.125" />
-        <EntityTypeShape EntityType="BootLegModel.Supplier" Width="1.5" PointX="3" PointY="1.875" />
-        <EntityTypeShape EntityType="BootLegModel.SupplierOrder" Width="1.5" PointX="5.25" PointY="0.875" />
-        <EntityTypeShape EntityType="BootLegModel.SupplierOrderDetail" Width="1.5" PointX="7.5" PointY="0.75" />
-        <EntityTypeShape EntityType="BootLegModel.SupplierType" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="BootLegModel.Table" Width="1.5" PointX="4.375" PointY="8.375" />
+        <EntityTypeShape EntityType="BootLegModel.Meal" Width="1.5" PointX="3" PointY="14.5" />
+        <EntityTypeShape EntityType="BootLegModel.Order" Width="1.5" PointX="3" PointY="17.5" />
+        <EntityTypeShape EntityType="BootLegModel.OrderDetail" Width="1.5" PointX="5.25" PointY="17.5" />
+        <EntityTypeShape EntityType="BootLegModel.OrderType" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="BootLegModel.Person" Width="1.5" PointX="0.75" PointY="4" />
+        <EntityTypeShape EntityType="BootLegModel.Product" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="BootLegModel.Reservation" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="BootLegModel.ReservationOrder" Width="1.5" PointX="5.25" PointY="7.5" />
+        <EntityTypeShape EntityType="BootLegModel.Staff" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="BootLegModel.StaffPosition" Width="1.5" PointX="0.75" PointY="8.5" />
+        <EntityTypeShape EntityType="BootLegModel.StaffType" Width="1.5" PointX="1.5" PointY="11.75" />
+        <EntityTypeShape EntityType="BootLegModel.Supplier" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="BootLegModel.SupplierOrder" Width="1.5" PointX="5.25" PointY="1.5" />
+        <EntityTypeShape EntityType="BootLegModel.SupplierOrderDetail" Width="1.5" PointX="7.5" PointY="1.375" />
+        <EntityTypeShape EntityType="BootLegModel.SupplierType" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BootLegModel.sysdiagram" Width="1.5" PointX="7.75" PointY="4.875" />
+        <EntityTypeShape EntityType="BootLegModel.Table" Width="1.5" PointX="0.75" PointY="14.5" />
         <AssociationConnector Association="BootLegModel.FK_OrderDetail_Meal" />
         <AssociationConnector Association="BootLegModel.FK_Order_OrderType" />
         <AssociationConnector Association="BootLegModel.FK_OrderDetail_Order" />
