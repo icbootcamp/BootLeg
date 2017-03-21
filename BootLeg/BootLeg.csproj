@@ -196,7 +196,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MealView.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
@@ -239,6 +238,9 @@
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SupplierType.cs">
+      <DependentUpon>BootLegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Table.cs">
@@ -319,7 +321,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Mealviews.cshtml" />
+    <Content Include="Views\Home\StaffManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

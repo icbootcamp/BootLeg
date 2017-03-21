@@ -9,7 +9,6 @@ namespace BootLeg.Controllers
 {
     public class HomeController : Controller
     {
-        BootLegEntities bootlegentities = new BootLegEntities();
         public ActionResult Index()
         {
             return View();
@@ -29,14 +28,12 @@ namespace BootLeg.Controllers
             return View();
         }
 
-        public ActionResult Mealviews()
+       public ActionResult StaffManagement ()
         {
-            
-            List<Meal> meal = bootlegentities.Meals.ToList();
-            MealView mealview = new MealView();
-            mealview.meal = meal;
-            
-            return View(mealview);
+            BootLegEntities db = new BootLegEntities();
+
+            var staffList = db.People.ToList();
+            return View(staffList);
         }
     }
 }
