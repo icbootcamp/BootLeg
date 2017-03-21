@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "SupplierName";
+}
+
+<h2>SupplierName</h2>
+
+<a href="~/Controllers/SupplierController.cs">Add</a>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            Name
+        </th>
+    </tr>
+    @foreach (SupplierType sn in Model)
+        {
+            <tr>
+                <td>
+                    @sn.Name
+                </td>
+            </tr>
+        }
+</table>
