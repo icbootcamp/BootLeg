@@ -195,7 +195,7 @@
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DinningTable.cs" />
+    <Compile Include="Models\DinningTableModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Order.cs">
