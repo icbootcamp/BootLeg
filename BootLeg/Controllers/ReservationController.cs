@@ -8,6 +8,7 @@ namespace BootLeg.Controllers
 {
     public class ReservationController : Controller
     {
+        
         // GET: Reservation
         public ActionResult Index()
         {
