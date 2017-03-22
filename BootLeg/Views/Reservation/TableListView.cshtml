@@ -1,0 +1,34 @@
+﻿@model List<BootLeg.Models.Dinningtable.DinningTableModel>
+@{
+    ViewBag.Title = "TableListView";
+}
+<head></head>
+<body>
+    <h2>Table List View</h2>
+
+    <table class="">
+        <tr>
+            <td>Table ID</td>
+            <td>Table Name</td>
+            <td>No. of Seats</td>
+            <td>Description</td>
+            <td>Operation</td>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Id</td>
+                <td>@x.TableName</td>
+                <td>@x.Seats</td>
+                <td>@x.Description</td>
+                <td>
+                    <button class="edit-table-button btn btn-warning">Update</button>
+                    <button class="remove-table-button btn btn-danger">Remove</button>
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+</body>
