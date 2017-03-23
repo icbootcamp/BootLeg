@@ -16,6 +16,10 @@ namespace BootLeg.Controllers
         {
             return View();
         }
+        public ActionResult TableView()
+        {
+            return View();
+        }
 
         // GET: Reservation
         public ActionResult TableList()
@@ -32,6 +36,15 @@ namespace BootLeg.Controllers
 
 
             return View(tableList);
+        }
+        public ActionResult TableRemove(int Id)
+        {
+            Console.WriteLine("{0} has been delete from database", Id);
+            var rmTable = db.Tables.Find(Id);
+            db.Tables.Remove(rmTable);
+            db.SaveChanges();
+
+            return RedirectToAction( "TableView", "Reservation");
         }
     }
 }
