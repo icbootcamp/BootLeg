@@ -198,6 +198,8 @@
     <Compile Include="Models\DinningTableModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MealView.cs" />
+    <Compile Include="Models\StaffListModel.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>

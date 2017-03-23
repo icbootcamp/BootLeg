@@ -18,13 +18,13 @@ namespace BootLeg.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Display(Name = "Address 1")]
-        public int Address1 { get; set; }
+        public String Address1 { get; set; }
         [Display(Name = "Address 2")]
-        public int Address2 { get; set; }
+        public String Address2 { get; set; }
         [Display(Name = "Phone Number")]
-        public int PhoneNumber { get; set; }
+        public String PhoneNumber { get; set; }
         [Display(Name = "Mobile Number")]
-        public int MobileNumber { get; set; }
+        public String MobileNumber { get; set; }
         [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
     }
@@ -37,8 +37,10 @@ namespace BootLeg.Models
         public DateTime HireDate { get; set; }
         [Display(Name = "Position")]
         public string Position { get; set; }
-        [Display(Name = "Staff Type")]
+        [Display(Name = "Type")]
         public string Type { get; set; }
+        [Display(Name = "Staff Id")]
+        public int StaffId { get; set; }
 
     }
 
