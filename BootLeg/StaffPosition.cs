@@ -17,6 +17,7 @@ namespace BootLeg
         public int Id { get; set; }
         public string Position { get; set; }
         public int StaffTypeId { get; set; }
+        public int StaffId { get; set; }
     
         public virtual Staff Staff { get; set; }
         public virtual StaffType StaffType { get; set; }
