@@ -1,4 +1,4 @@
-﻿@model BootLeg.Models.PersonListModel
+﻿@model List<BootLeg.Models.StaffModel>
 @{
     ViewBag.Title = "StaffManagement";
 }
@@ -9,15 +9,24 @@
 <table class="table table-bordered table-striped">
 
     <tr>
+       
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Hire Date</th>
+        <th>Position</th>
+        <th>Staff Type</th>
         
-        
-        
-            
+           
     </tr>
-    @foreach (var sm in @Model.)
+    @foreach (var sm in Model)
     {
         <tr>
             
+            <td>@sm.Id</td>
+            <td>@sm.FirstName</td>
+            <td>@sm.HireDate</td>
+            <td>@sm.Position</td>
+            <td>@sm.Type</td>
           
         </tr>
     }
