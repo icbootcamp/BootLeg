@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "TableView";
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<div id="list-inject">
+    <h1>1324567890</h1>
+</div>
+<h1>13245678912313120</h1>
+<script>
+    $.ajax(
+            {
+                url: '/Reservation/TableList',
+                type: 'get',
+                success: function (result)
+                {
+                    
+                    $("#list-inject").html(result);
+                    $(".remove-table-button").click
+                    (
+                        function ()
+                        {
+                            var thisId = $(this).parents("tr").find("#dataid").text();
+                            alert(thisId);
+                            $.ajax(
+                                    {
+                                        url: '/Reservation/TableRemove',
+                                        type: 'post',
+                                        data: { Id: thisId }
+                                    }
+                                )
+                        }
+                    )
+
+                    $(".add-table-button").click
+                    (
+                        called()
+                    )
+                }
+            }
+        )
+
+    function called()
+    {
+        alert("I am {0}",this);
+    }
+</script>

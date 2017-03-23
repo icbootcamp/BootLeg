@@ -5,7 +5,7 @@ using System.Web;
 
 namespace BootLeg.Models
 {
-    public class MealViewModel
+    public class MealView
     {
         public List<Meal> meal { get; set; }
     }

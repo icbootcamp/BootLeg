@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace BootLeg.Models.Dinningtable
+namespace BootLeg.Models
 
 {
     //Creating a class for base table
