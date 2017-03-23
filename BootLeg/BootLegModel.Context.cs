@@ -40,7 +40,6 @@ namespace BootLeg
         public virtual DbSet<SupplierOrder> SupplierOrders { get; set; }
         public virtual DbSet<SupplierOrderDetail> SupplierOrderDetails { get; set; }
         public virtual DbSet<SupplierType> SupplierTypes { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Table> Tables { get; set; }
     }
 }
