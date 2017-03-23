@@ -20,7 +20,6 @@
         <EntityTypeShape EntityType="BootLegModel.SupplierOrder" Width="1.5" PointX="5.25" PointY="1.5" />
         <EntityTypeShape EntityType="BootLegModel.SupplierOrderDetail" Width="1.5" PointX="7.5" PointY="1.375" />
         <EntityTypeShape EntityType="BootLegModel.SupplierType" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BootLegModel.sysdiagram" Width="1.5" PointX="7.75" PointY="4.875" />
         <EntityTypeShape EntityType="BootLegModel.Table" Width="1.5" PointX="0.75" PointY="14.5" />
         <AssociationConnector Association="BootLegModel.FK_OrderDetail_Meal" />
         <AssociationConnector Association="BootLegModel.FK_Order_OrderType" />

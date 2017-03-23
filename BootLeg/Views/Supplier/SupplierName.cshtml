@@ -1,22 +1,48 @@
 ﻿
 @{
-    ViewBag.Title = "SupplierName";
+    ViewBag.Title = "supplierName";
 }
 
 <h2>SupplierName</h2>
 
-<a href="~/Controllers/SupplierController.cs">Add</a>
+<a href="~/Views/Supplier/AddSupplierView.cshtml">Add</a>
+
 <table class="table table-bordered table-striped">
     <tr>
         <th>
-            Name
+            Company Name
+        </th>
+        <th>
+            Address 1
+        </th>
+        <th>
+            Address 2
+        </th>
+        <th>
+            Email Address
+        </th>
+        <th>
+            Supplier Type
         </th>
     </tr>
-    @foreach (SupplierType sn in Model)
+    @foreach (Supplier sn in Model)
         {
             <tr>
                 <td>
-                    @sn.Name
+                    @sn.CompanyName
+                </td>
+                
+                <td>
+                    @sn.Person.Address1
+                </td>
+                <td>
+                    @sn.Person.Address2
+                </td>
+                <td>
+                @sn.Person.EmailAddress
+               </td>
+                <td>
+                    @sn.SupplierType.Name
                 </td>
             </tr>
         }
