@@ -48,13 +48,60 @@ namespace BootLeg.Controllers
         }
         public ActionResult TableEntry(int Idd)
         {
+            DinningTableModel model;
             if (Idd == 0)
             {
-                var model = new DinningTableModel(0,"",2,"");
-                return Json(model, JsonRequestBehavior.AllowGet);
+                model = new DinningTableModel(0, "", 2, "");
+                
+            }
+            else
+            {
+                model = db.Tables.Where(x => x.Id == Idd).Select(x => 
+                            new DinningTableModel {
+                                Id = x.Id,
+                                Seats = x.Seats,
+                                TableName = x.TableName,
+                                Description = x.Description
+                            }).First();
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult TableEntied(string x)
+        {
+            var sArray = x.Split('&');
+            Dictionary<string, string> htmlFromModal = new Dictionary<string, string>();
+            foreach (string str in sArray)
+            {
+                var st = str.Split('=');
+                htmlFromModal.Add(st[0], st[1]);
+            }
+            if (Convert.ToInt16(htmlFromModal["Id"]) == 0)
+            {
+
+                db.Tables.Add(
+                    new Table
+                    {
+                        TableName = htmlFromModal["PopModal-p1-input"],
+                        Seats = Convert.ToInt16(htmlFromModal["PopModal-p2-input"]),
+                        Description = htmlFromModal["PopModal-p3-input"]
+                    });
+            }
+            else
+            {
+                var updatingData = db.Tables.Find(Convert.ToInt16(htmlFromModal["Id"]));
+                var tName = htmlFromModal["PopModal-p1-input"].Trim();
+                var tDesc = htmlFromModal["PopModal-p3-input"].Trim();
+                updatingData.TableName = tName.Trim();
+                updatingData.Seats = Convert.ToInt16(htmlFromModal["PopModal-p2-input"]);
+                updatingData.Description = tDesc.Trim();
             }
 
-            return View();
+
+            db.SaveChanges();
+            return RedirectToAction("TableView", "Reservation");
         }
+
     }
 }

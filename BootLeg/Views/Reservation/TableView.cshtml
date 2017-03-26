@@ -58,13 +58,13 @@
                                            $("#Id").val(tId);
                                            $("#Id").hidden = true;
 
-                                           $("#PopModal-p1").hidden = false;
+                                           $("#PopModal-p1").show();
 
                                            $("#PopModal-p2-label").text("No. of Seats");
-                                           $("#PopModal-p2").hidden = false;
+                                           $("#PopModal-p2").show();
 
                                            $("#PopModal-p3-label").text("Description");
-                                           $("#PopModal-p3").hidden = false;
+                                           $("#PopModal-p3").show();
                                            //var seatSelect = $("#Seat");
                                            
 
@@ -74,11 +74,113 @@
                                            
                                            $(".modal-title").text("Add New Table");
                                            $("#Pop-model").modal("show");
+                                           $(".save-changes-btn").click
+                                            (
+                                                function ()
+                                            {
+                                                var x = $("#edit-pop-form").serialize();
+                                                alert(typeof(x));
+                                                $.ajax(
+                                                        {
+                                                            url: '/Reservation/TableEntied',
+                                                            type: 'post',
+                                                            data: {x:x},
+                                                            success: function (result) {
+                                                                $("#PopModal-p1-input").val("");
+                                                                $("#PopModal-p1").hide();
 
+                                                                $("#PopModal-p2-input").val("");
+                                                                $("#PopModal-p2").hide();
+
+                                                                $("#PopModal-p3-input").val("");
+                                                                $("#PopModal-p3").hide();
+                                                                //var seatSelect = $("#Seat");
+
+                                                                $(".modal-title").val("");
+                                                                $("#Pop-model").modal("hide");
+                                                                TableListLoad();
+                                                            }
+                                                        }
+                                                    )
+                                            }
+                                            )
                                        }
                                    }
                                )
                            
+                        }
+                    )
+                    $(".edit-table-button").click
+                    (
+                        function ()
+                        {
+                            var selectId = $(this).parents("tr").find("#dataid").text();
+                            $.ajax(
+                                    {
+                                        url: '/Reservation/TableEntry',
+                                        type: 'post',
+                                        data: { Idd: selectId },
+                                        success: function (result)
+                                        {
+                                            console.log(result);
+                                            $("#Id").val(selectId);
+                                            $("#Id").hidden = true;
+
+                                            $("#PopModal-p1-input").val(result.TableName);
+
+                                            $("#PopModal-p2-input").val(result.Seats);
+
+                                            $("#PopModal-p3-input").val(result.Description);
+
+                                            $("#PopModal-p1").show();
+                                            $("#PopModal-p1-label").text("TaskName");
+                                            $("#PopModal-p2-label").text("No. of Seats");
+                                            $("#PopModal-p2").show();
+
+                                            $("#PopModal-p3-label").text("Description");
+                                            $("#PopModal-p3").show();
+                                            //var seatSelect = $("#Seat");
+
+
+                                            $(".close-btn").html("Cancel");
+                                            $(".save-changes-btn").html("Update");
+                                            $("#Description").val("");
+
+                                            $(".modal-title").text("Add New Table");
+                                            $("#Pop-model").modal("show");
+                                            $(".save-changes-btn").click
+                                           (
+                                               function () {
+                                                   var x = $("#edit-pop-form").serialize();
+                                                   //alert(typeof (x));
+                                                   $.ajax(
+                                                           {
+                                                               url: '/Reservation/TableEntied',
+                                                               type: 'post',
+                                                               data: { x: x },
+                                                               success: function (result) {
+                                                                   $("#PopModal-p1-input").val("");
+                                                                   $("#PopModal-p1").hide();
+
+                                                                   $("#PopModal-p2-input").val("");
+                                                                   $("#PopModal-p2").hide();
+
+                                                                   $("#PopModal-p3-input").val("");
+                                                                   $("#PopModal-p3").hide();
+                                                                   //var seatSelect = $("#Seat");
+
+                                                                   $(".modal-title").val("");
+                                                                   $("#Pop-model").modal("hide");
+                                                                   TableListLoad();
+                                                               }
+                                                           }
+                                                       )
+                                               }
+                                           )
+                                        }
+
+                                    }
+                                )
                         }
                     )
                 }

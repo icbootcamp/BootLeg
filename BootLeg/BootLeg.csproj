@@ -245,9 +245,6 @@
     <Compile Include="SupplierType.cs">
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>BootLegModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Table.cs">
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
