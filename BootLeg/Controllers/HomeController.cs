@@ -28,7 +28,7 @@ namespace BootLeg.Controllers
             return View();
         }
 
-       public ActionResult StaffManagement ()
+        public ActionResult StaffManagement()
         {
             BootLegEntities db = new BootLegEntities();
 

@@ -104,7 +104,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="CompanyName" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="SuppplierTypeId" Type="int" Nullable="false" />
           <Property Name="CreditLimit" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -604,7 +604,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
           <Property Name="SuppplierTypeId" Type="Int32" Nullable="false" />
           <Property Name="CreditLimit" Type="Decimal" Nullable="false" Precision="18" Scale="0" />

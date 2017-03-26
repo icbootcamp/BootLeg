@@ -7,14 +7,19 @@
     <h1>1324567890</h1>
 </div>
 <h1>13245678912313120</h1>
-<script>
+<body onload="TableListLoad()">
+
+</body>
+    <script>
+    function TableListLoad()
+    {
     $.ajax(
             {
                 url: '/Reservation/TableList',
                 type: 'get',
                 success: function (result)
                 {
-                    
+
                     $("#list-inject").html(result);
                     $(".remove-table-button").click
                     (
@@ -26,7 +31,11 @@
                                     {
                                         url: '/Reservation/TableRemove',
                                         type: 'post',
-                                        data: { Id: thisId }
+                                        data: { Id: thisId },
+                                        success: function(result)
+                                        {
+                                            TableListLoad()
+                                        }
                                     }
                                 )
                         }
@@ -34,14 +43,46 @@
 
                     $(".add-table-button").click
                     (
-                        called()
+                        function ()
+                        {
+                            var tId = 0;
+                            //alert(tId);
+                            $.ajax(
+                                   {
+                                       url: '/Reservation/TableEntry',
+                                       type: 'post',
+                                       data: { Idd: tId },
+                                       success: function (result) {
+                                           //console.log(Idd);
+                                           console.log(result);
+                                           $("#Id").val(tId);
+                                           $("#Id").hidden = true;
+
+                                           $("#PopModal-p1").hidden = false;
+
+                                           $("#PopModal-p2-label").text("No. of Seats");
+                                           $("#PopModal-p2").hidden = false;
+
+                                           $("#PopModal-p3-label").text("Description");
+                                           $("#PopModal-p3").hidden = false;
+                                           //var seatSelect = $("#Seat");
+                                           
+
+                                           $(".close-btn").html("Cancel");
+                                           $(".save-changes-btn").html("Add");
+                                           $("#Description").val("");
+                                           
+                                           $(".modal-title").text("Add New Table");
+                                           $("#Pop-model").modal("show");
+
+                                       }
+                                   }
+                               )
+                           
+                        }
                     )
                 }
             }
         )
-
-    function called()
-    {
-        alert("I am {0}",this);
     }
-</script>
+    </script>

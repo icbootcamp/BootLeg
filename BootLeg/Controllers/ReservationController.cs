@@ -44,7 +44,17 @@ namespace BootLeg.Controllers
             db.Tables.Remove(rmTable);
             db.SaveChanges();
 
-            return RedirectToAction( "TableView", "Reservation");
+            return RedirectToAction("TableView", "Reservation");
+        }
+        public ActionResult TableEntry(int Idd)
+        {
+            if (Idd == 0)
+            {
+                var model = new DinningTableModel(0,"",2,"");
+                return Json(model, JsonRequestBehavior.AllowGet);
+            }
+
+            return View();
         }
     }
 }
