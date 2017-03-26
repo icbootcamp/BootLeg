@@ -6,7 +6,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/Views/Shared/LayoutInject.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,99 +25,27 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("SupplierName", "SupplierName", "Supplier")</li>
+                    <li>@Html.ActionLink("StaffManagement", "StaffManagement", "Staff")</li>
                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        <div class="modal fade" id="Pop-model" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Edit Student Profile</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" id="edit-student-form">
-                            <p id="PopModal-Id-p" hidden="hidden">
-                                <label>Id</label>
-                                <input type="text" id="Id" name="Id" readonly />
-                            </p>
-                            <p id="PopModal-p1" hidden="hidden">
-                                <label id="PopModal-p1-label">TableName</label>
-                                <input type="text" id="PopModal-p1-input" name="PopModal-Paramet-1" />
-                            </p>
-                            <p id="PopModal-p2" hidden="hidden">
-                                <label id="PopModal-p2-label">TableName</label>
-                                <input type="text" id="PopModal-p2-input" name="PopModal-p2-input" />
-                            </p>
-                            <p id="PopModal-p3" hidden="hidden">
-                                <label id="PopModal-p3-label">TableName</label>
-                                <input type="text" id="PopModal-p3-input" name="PopModal-p3-input" />
-                            </p>
-                            <p id="PopModal-p4" hidden="hidden">
-                                <label id="PopModal-p4-label">TableName</label>
-                                <input type="text" id="PopModal-p4-input" name="PopModal-p4-input" />
-                            </p>
-                            <p id="PopModal-p5" hidden="hidden">
-                                <label id="PopModal-p5-label">TableName</label>
-                                <input type="text" id="PopModal-p5-input" name="PopModal-p5-input" />
-                            </p>
-                            <p id="PopModal-p6" hidden="hidden">
-                                <label id="PopModal-p6-label">TableName</label>
-                                <input type="text" id="PopModal-p6-input" name="PopModal-p6-input" />
-                            </p>
-                            <p id="PopModal-p7" hidden="hidden">
-                                <label id="PopModal-p7-label">TableName</label>
-                                <input type="text" id="PopModal-p7-input" name="PopModal-p7-input" />
-                            </p>
-                            <p id="PopModal-p8" hidden="hidden">
-                                <label id="PopModal-p8-label">TableName</label>
-                                <input type="text" id="PopModal-p8-input" name="PopModal-p8-input" />
-                            </p>
-                            <p id="PopModal-p9" hidden="hidden">
-                                <label id="PopModal-p9-label">TableName</label>
-                                <input type="text" id="PopModal-p9-input" name="PopModal-p9-input" />
-                            </p>
-                            <p id="PopModal-p10" hidden="hidden">
-                                <label id="PopModal-p10-label">TableName</label>
-                                <input type="text" id="PopModal-p10-input" name="PopModal-p10-input" />
-                            </p>
-                            <p id="PopModal-p11" hidden="hidden">
-                                <label id="PopModal-p11-label">TableName</label>
-                                <input type="text" id="PopModal-p11-input" name="PopModal-p11-input" />
-                            </p>
-                            <p id="PopModal-p12" hidden="hidden">
-                                <label id="PopModal-p12-label">TableName</label>
-                                <select id="PopModal-p12-input" name="PopModal-p12-input">
-                                    @for (var i = 0; i <= 10; i++)
-                                    {
-                                        <option>@i</option>
-                                    }
-                                </select>
-                            </p>
 
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="close-btn btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="save-changes-btn btn btn-primary">Save changes</button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+    
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    
+        
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+    
 </body>
 </html>

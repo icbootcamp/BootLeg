@@ -1,0 +1,42 @@
+﻿@model BootLeg.Models.StaffModel
+@{
+    ViewBag.Title = "editStaff";
+
+}
+
+
+<h2>editStaff</h2>
+
+<table>
+@using (Html.BeginForm())
+{
+    <tr>
+        <td>
+            @Html.LabelFor(m => m.Position)
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.Position)
+        </td>
+
+    </tr>
+     
+        
+
+
+
+        <tr>
+            <td>
+                <input type="submit" />
+            </td>
+        </tr>
+
+
+}
+
+</table>
+
+
+
+
+
+

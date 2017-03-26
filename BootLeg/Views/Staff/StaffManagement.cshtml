@@ -1,6 +1,7 @@
 ﻿@model List<BootLeg.Models.StaffModel>
 @{
     ViewBag.Title = "StaffManagement";
+    Layout = null;
 }
 
 <h2>StaffManagement</h2>
@@ -9,29 +10,41 @@
 <table class="table table-bordered table-striped">
 
     <tr>
-       
+
         <th>Staff Id</th>
         <th>First Name</th>
         <th>Hire Date</th>
         <th>Position</th>
         <th>Staff Type</th>
         <th>Edit</th>
-        <th>Delete</th>
-           
+        
+        
+
     </tr>
     @foreach (var sm in Model)
     {
         <tr>
-            
+
             <td>@sm.StaffId</td>
             <td>@sm.FirstName</td>
             <td>@sm.HireDate</td>
             <td>@sm.Position</td>
             <td>@sm.Type</td>
-            <td><a href="/Home/editStaff?staffId=@sm.StaffId">Edit</a></td>
-            <td><a href="/Home/removeStaff?staffId=@sm.StaffId">Delete</a></td>
+            <td><button class="edit-button-press btn-success">Edit</button></td>
         </tr>
+
     }
 
 </table>
+
+
+
+
+
+
+
+<div id="List-inject">
+
+</div>
+
 
