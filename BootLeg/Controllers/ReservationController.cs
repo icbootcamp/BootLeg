@@ -91,9 +91,11 @@ namespace BootLeg.Controllers
             else
             {
                 var updatingData = db.Tables.Find(Convert.ToInt16(htmlFromModal["Id"]));
-                updatingData.TableName = htmlFromModal["PopModal-p1-input"].Trim();
+                var tName = htmlFromModal["PopModal-p1-input"].Trim();
+                var tDesc = htmlFromModal["PopModal-p3-input"].Trim();
+                updatingData.TableName = tName.Trim();
                 updatingData.Seats = Convert.ToInt16(htmlFromModal["PopModal-p2-input"]);
-                updatingData.Description = htmlFromModal["PopModal-p3-input"].Trim();
+                updatingData.Description = tDesc.Trim();
             }
 
 
