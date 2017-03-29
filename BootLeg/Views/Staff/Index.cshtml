@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    
+}
+
+<div id="injectHere">
+</div>
+
+<script>
+    $.ajax({
+        url: '/Staff/editStaff',
+        type: 'get',
+        success: function (result) {
+            $("#injectHere").html(result);
+            $(".edit-button-press").click(function () {
+                var id = $(this).parents("tr").find(".id-data").html();
+                console.log(result);
+                $
+            })
+        }
+    })
+    
+</script>

@@ -84,29 +84,4 @@ namespace BootLeg.Models
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
 
-    public class PersonClass
-    {
-        [Display(Name = "Person Id")]
-        public int ID { get; set; }
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-        [Display(Name = "Address 1")]
-        public int Address1 { get; set; }
-        [Display(Name = "Address 2")]
-        public int Address2 { get; set; }
-        [Display(Name = "Phone Number")]
-        public int PhoneNumber { get; set; }
-        [Display(Name = "Mobile Number")]
-        public int MobileNumber { get; set; }
-        [Display(Name = "Email Address")]
-        public int EmailAddress { get; set; }
-    }
-
-    public class PersonListModel
-    {
-        public List<PersonClass> PersonList { get; set; }
-    }
-
 }
