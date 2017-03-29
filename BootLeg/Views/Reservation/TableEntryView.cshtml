@@ -1,0 +1,48 @@
+﻿@model BootLeg.Models.TableEntryModel
+@{
+    ViewBag.Title = "TableEntryView";
+}
+
+
+<body>
+<h2 class="h2_title"></h2>
+
+
+<table>
+    @using (Html.BeginForm())
+    {
+        <tr hidden="hidden">
+            <td>
+                @Html.LabelFor(x => x.Id)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Id)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.TableName)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.TableName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.Description)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Description)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.Seats)
+            </td>
+            <td>
+                @Html.DropDownListFor(x => x.Seats, Model.OpinSeats)
+            </td>
+        </tr>
+    }
+</table>
+</body>
