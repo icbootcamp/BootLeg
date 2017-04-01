@@ -202,6 +202,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MealModel.cs" />
     <Compile Include="Models\StaffListModel.cs" />
+    <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>BootLegModel.tt</DependentUpon>
     </Compile>
