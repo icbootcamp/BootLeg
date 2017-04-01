@@ -334,6 +334,9 @@
     <Content Include="Views\Staff\editStaff.cshtml" />
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Staff\StaffManagement.cshtml" />
+    <Content Include="Views\Staff\editStaff.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\Staff\StaffManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
