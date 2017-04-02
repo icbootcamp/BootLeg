@@ -25,7 +25,7 @@ namespace BootLeg.Controllers
         public ActionResult TableList()
         {
             var tableList = db.Tables.Select(
-                x => new DinningTableModel
+                x => new TableModel
                 {
                     Id = x.Id,
                     TableName = x.TableName,
@@ -46,62 +46,76 @@ namespace BootLeg.Controllers
 
             return RedirectToAction("TableView", "Reservation");
         }
-        public ActionResult TableEntry(int Idd)
+        public ActionResult TableEntryView(int Idd)
         {
-            DinningTableModel model;
+            TableEntryModel model;
             if (Idd == 0)
             {
-                model = new DinningTableModel(0, "", 2, "");
-                
+                model = new TableEntryModel
+                {
+                    Id = 0,
+                    TableName = "",
+                    Seats = 2,
+                    Description = "",
+                    OpinSeats = SeatsItemGen(10)};
+                    
             }
             else
             {
                 model = db.Tables.Where(x => x.Id == Idd).Select(x => 
-                            new DinningTableModel {
-                                Id = x.Id,
-                                Seats = x.Seats,
-                                TableName = x.TableName,
-                                Description = x.Description
-                            }).First();
+                                new TableEntryModel
+                                {
+                                    Id = x.Id,
+                                    Seats = x.Seats,
+                                    TableName = x.TableName,
+                                    Description = x.Description,
+                                
+                                }
+                ).First();;
+                model.OpinSeats = SeatsItemGen(10);
             }
-            return Json(model, JsonRequestBehavior.AllowGet);
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult TableEntied(string x)
+        public ActionResult TableEntied(TableEntryModel x)
         {
-            var sArray = x.Split('&');
-            Dictionary<string, string> htmlFromModal = new Dictionary<string, string>();
-            foreach (string str in sArray)
-            {
-                var st = str.Split('=');
-                htmlFromModal.Add(st[0], st[1]);
-            }
-            if (Convert.ToInt16(htmlFromModal["Id"]) == 0)
+            
+            if (x.Id == 0)
             {
 
                 db.Tables.Add(
                     new Table
                     {
-                        TableName = htmlFromModal["PopModal-p1-input"],
-                        Seats = Convert.ToInt16(htmlFromModal["PopModal-p2-input"]),
-                        Description = htmlFromModal["PopModal-p3-input"]
+                        TableName = x.TableName.Trim(),
+                        Seats = x.Seats,
+                        Description = x.Description
                     });
             }
             else
             {
-                var updatingData = db.Tables.Find(Convert.ToInt16(htmlFromModal["Id"]));
-                var tName = htmlFromModal["PopModal-p1-input"].Trim();
-                var tDesc = htmlFromModal["PopModal-p3-input"].Trim();
-                updatingData.TableName = tName.Trim();
-                updatingData.Seats = Convert.ToInt16(htmlFromModal["PopModal-p2-input"]);
-                updatingData.Description = tDesc.Trim();
+                var updatingData = db.Tables.Find(x.Id);
+
+                updatingData.TableName = x.TableName.Trim();
+                updatingData.Seats = x.Seats;
+                updatingData.Description = x.Description.Trim();
             }
 
 
             db.SaveChanges();
             return RedirectToAction("TableView", "Reservation");
         }
-
+        public List<SelectListItem> SeatsItemGen(int maxSeatLength)
+        {
+            List<SelectListItem> rstList = new List<SelectListItem>();
+            for (int i = 2; i <= maxSeatLength; i++)
+            {
+                SelectListItem x = new SelectListItem();
+                x.Text = Convert.ToString(i);
+                x.Value = Convert.ToString(i);
+                rstList.Add(x);
+            }
+            return rstList;
+        }
     }
 }
