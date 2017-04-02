@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BootLeg.Models
 
 {
     //Creating a class for base table
-    public class DinningTableModel
+    public class TableModel
     {
         [Display(Name = "ID")]
         public int Id { get; set; }
@@ -18,15 +19,10 @@ namespace BootLeg.Models
         public int Seats { get; set; }
         [Display(Name = "Description")]
         public string Description { get; set; }
-
-        public DinningTableModel() { }
-
-        public DinningTableModel(int id, string tableName, int seats, string desc = null)
-        {
-            this.Id = id;
-            this.Seats = seats;
-            this.TableName = tableName;
-            this.Description = desc;
-        }
+    }
+    public class TableEntryModel : TableModel
+    {
+        [Display(Name = "OpinSeats")]
+        public List<SelectListItem> OpinSeats = new List<SelectListItem>();
     }
 }

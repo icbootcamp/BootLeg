@@ -9,6 +9,8 @@ namespace BootLeg.Controllers
 {
     public class HomeController : Controller
     {
+        private BootLegEntities db = new BootLegEntities();
+
         public ActionResult Index()
         {
             return View();
@@ -17,7 +19,7 @@ namespace BootLeg.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+           
             return View();
         }
 
@@ -28,12 +30,6 @@ namespace BootLeg.Controllers
             return View();
         }
 
-        public ActionResult StaffManagement()
-        {
-            BootLegEntities db = new BootLegEntities();
-
-            var staffList = db.People.ToList();
-            return View(staffList);
-        }
+        
     }
 }
