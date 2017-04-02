@@ -1,23 +1,55 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Home Page";
     
 }
-
+<script src="~/Scripts/jquery-1.10.2.js"></script>
 <div id="injectHere">
 </div>
 
 <script>
     $.ajax({
-        url: '/Staff/editStaff',
+        url: '/Staff/StaffManagement',
         type: 'get',
         success: function (result) {
             $("#injectHere").html(result);
+            
+            
             $(".edit-button-press").click(function () {
-                var id = $(this).parents("tr").find(".id-data").html();
-                console.log(result);
-                $
-            })
-        }
+                var thisId = $(this).parents("tr").find("#dataid").text();
+                    $.ajax({
+                    url: '/Staff/editStaff',
+                    type: 'post',
+                    data: { StaffId : thisId },
+                    success : function(result)
+                    {   
+                        $("#edit-student-form").html(result);
+                        $("#craigs-model").modal("show")
+                        $(".save-changes-btn").click(function(){
+                            
+                            var editS = $("#edit-student-form").serialize();
+                            console.log(editS)
+                            $.ajax({
+                                url: '/Staff/SaveEdit',
+                                type: 'post',
+                                data: editS,
+                                success : function(result){
+
+                                }
+                            })
+                        }
+                       
+                       
+                    )
+
+                    }
+                })
+            }
+            )}
     })
     
 </script>
+
+
+
+
