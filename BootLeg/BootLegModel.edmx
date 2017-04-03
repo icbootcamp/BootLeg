@@ -1,0 +1,1018 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BootLegModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Meal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MealTypeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="MealId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="30" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="20" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Descripton" Type="nchar" MaxLength="50" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="TableId" Type="int" Nullable="false" />
+          <Property Name="SittingTime" Type="datetime" Nullable="false" />
+          <Property Name="PartySize" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReservationOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ReservationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="HourlyRate" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="HireDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffPosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="StaffTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="SuppplierTypeId" Type="int" Nullable="false" />
+          <Property Name="CreditLimit" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="OrderNumber" Type="nchar" MaxLength="15" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierOrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="SupplierOrderID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableName" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Seats" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Order_OrderType">
+          <End Role="OrderType" Type="Self.OrderType" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Meal">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="MealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservation_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservation_Table">
+          <End Role="Table" Type="Self.Table" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="TableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservationOrder_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="ReservationOrder" Type="Self.ReservationOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReservationOrder">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservationOrder_Reservation">
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
+          <End Role="ReservationOrder" Type="Self.ReservationOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReservationOrder">
+              <PropertyRef Name="ReservationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_StaffPosition">
+          <End Role="StaffPosition" Type="Self.StaffPosition" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="StaffPosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffPosition_StaffType">
+          <End Role="StaffType" Type="Self.StaffType" Multiplicity="1" />
+          <End Role="StaffPosition" Type="Self.StaffPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StaffPosition">
+              <PropertyRef Name="StaffTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_SupplierType">
+          <End Role="SupplierType" Type="Self.SupplierType" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="SuppplierTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierOrder_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="SupplierOrder" Type="Self.SupplierOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierOrder">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierOrderDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SupplierOrderDetail" Type="Self.SupplierOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierOrderDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierOrderDetail_SupplierOrder">
+          <End Role="SupplierOrder" Type="Self.SupplierOrder" Multiplicity="1" />
+          <End Role="SupplierOrderDetail" Type="Self.SupplierOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierOrder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierOrderDetail">
+              <PropertyRef Name="SupplierOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BootLegModelStoreContainer">
+          <EntitySet Name="Meal" EntityType="Self.Meal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderType" EntityType="Self.OrderType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReservationOrder" EntityType="Self.ReservationOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffPosition" EntityType="Self.StaffPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffType" EntityType="Self.StaffType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierOrder" EntityType="Self.SupplierOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierOrderDetail" EntityType="Self.SupplierOrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierType" EntityType="Self.SupplierType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Order_OrderType" Association="Self.FK_Order_OrderType">
+            <End Role="OrderType" EntitySet="OrderType" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Meal" Association="Self.FK_OrderDetail_Meal">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_Person" Association="Self.FK_Reservation_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_Table" Association="Self.FK_Reservation_Table">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservationOrder_Order" Association="Self.FK_ReservationOrder_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="ReservationOrder" EntitySet="ReservationOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservationOrder_Reservation" Association="Self.FK_ReservationOrder_Reservation">
+            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="ReservationOrder" EntitySet="ReservationOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Person" Association="Self.FK_Staff_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_StaffPosition" Association="Self.FK_Staff_StaffPosition">
+            <End Role="StaffPosition" EntitySet="StaffPosition" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffPosition_StaffType" Association="Self.FK_StaffPosition_StaffType">
+            <End Role="StaffType" EntitySet="StaffType" />
+            <End Role="StaffPosition" EntitySet="StaffPosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Person" Association="Self.FK_Supplier_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_SupplierType" Association="Self.FK_Supplier_SupplierType">
+            <End Role="SupplierType" EntitySet="SupplierType" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierOrder_Supplier" Association="Self.FK_SupplierOrder_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplierOrder" EntitySet="SupplierOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierOrderDetail_Product" Association="Self.FK_SupplierOrderDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SupplierOrderDetail" EntitySet="SupplierOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierOrderDetail_SupplierOrder" Association="Self.FK_SupplierOrderDetail_SupplierOrder">
+            <End Role="SupplierOrder" EntitySet="SupplierOrder" />
+            <End Role="SupplierOrderDetail" EntitySet="SupplierOrderDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BootLegModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Meal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MealTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Meal" FromRole="Meal" ToRole="OrderDetail" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderType" Relationship="Self.FK_Order_OrderType" FromRole="Order" ToRole="OrderType" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
+          <NavigationProperty Name="ReservationOrders" Relationship="Self.FK_ReservationOrder_Order" FromRole="Order" ToRole="ReservationOrder" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="MealId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Meal" Relationship="Self.FK_OrderDetail_Meal" FromRole="OrderDetail" ToRole="Meal" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="OrderType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_OrderType" FromRole="OrderType" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Person" FromRole="Person" ToRole="Reservation" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_Person" FromRole="Person" ToRole="Staff" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Supplier_Person" FromRole="Person" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Descripton" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="SupplierOrderDetails" Relationship="Self.FK_SupplierOrderDetail_Product" FromRole="Product" ToRole="SupplierOrderDetail" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="TableId" Type="Int32" Nullable="false" />
+          <Property Name="SittingTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PartySize" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Reservation_Person" FromRole="Reservation" ToRole="Person" />
+          <NavigationProperty Name="Table" Relationship="Self.FK_Reservation_Table" FromRole="Reservation" ToRole="Table" />
+          <NavigationProperty Name="ReservationOrders" Relationship="Self.FK_ReservationOrder_Reservation" FromRole="Reservation" ToRole="ReservationOrder" />
+        </EntityType>
+        <EntityType Name="ReservationOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ReservationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_ReservationOrder_Order" FromRole="ReservationOrder" ToRole="Order" />
+          <NavigationProperty Name="Reservation" Relationship="Self.FK_ReservationOrder_Reservation" FromRole="ReservationOrder" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="HourlyRate" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Staff_Person" FromRole="Staff" ToRole="Person" />
+          <NavigationProperty Name="StaffPosition" Relationship="Self.FK_Staff_StaffPosition" FromRole="Staff" ToRole="StaffPosition" />
+        </EntityType>
+        <EntityType Name="StaffPosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Position" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StaffTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_StaffPosition" FromRole="StaffPosition" ToRole="Staff" />
+          <NavigationProperty Name="StaffType" Relationship="Self.FK_StaffPosition_StaffType" FromRole="StaffPosition" ToRole="StaffType" />
+        </EntityType>
+        <EntityType Name="StaffType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="StaffPositions" Relationship="Self.FK_StaffPosition_StaffType" FromRole="StaffType" ToRole="StaffPosition" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="SuppplierTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreditLimit" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Supplier_Person" FromRole="Supplier" ToRole="Person" />
+          <NavigationProperty Name="SupplierType" Relationship="Self.FK_Supplier_SupplierType" FromRole="Supplier" ToRole="SupplierType" />
+          <NavigationProperty Name="SupplierOrders" Relationship="Self.FK_SupplierOrder_Supplier" FromRole="Supplier" ToRole="SupplierOrder" />
+        </EntityType>
+        <EntityType Name="SupplierOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OrderNumber" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="SupplierId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_SupplierOrder_Supplier" FromRole="SupplierOrder" ToRole="Supplier" />
+          <NavigationProperty Name="SupplierOrderDetails" Relationship="Self.FK_SupplierOrderDetail_SupplierOrder" FromRole="SupplierOrder" ToRole="SupplierOrderDetail" />
+        </EntityType>
+        <EntityType Name="SupplierOrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="SupplierOrderID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_SupplierOrderDetail_Product" FromRole="SupplierOrderDetail" ToRole="Product" />
+          <NavigationProperty Name="SupplierOrder" Relationship="Self.FK_SupplierOrderDetail_SupplierOrder" FromRole="SupplierOrderDetail" ToRole="SupplierOrder" />
+        </EntityType>
+        <EntityType Name="SupplierType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK_Supplier_SupplierType" FromRole="SupplierType" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Seats" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Table" FromRole="Table" ToRole="Reservation" />
+        </EntityType>
+        <Association Name="FK_OrderDetail_Meal">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="MealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderType">
+          <End Role="OrderType" Type="Self.OrderType" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservationOrder_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="ReservationOrder" Type="Self.ReservationOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReservationOrder">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservation_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierOrderDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SupplierOrderDetail" Type="Self.SupplierOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierOrderDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservation_Table">
+          <End Role="Table" Type="Self.Table" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="TableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservationOrder_Reservation">
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
+          <End Role="ReservationOrder" Type="Self.ReservationOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReservationOrder">
+              <PropertyRef Name="ReservationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_StaffPosition">
+          <End Role="StaffPosition" Type="Self.StaffPosition" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="StaffPosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffPosition_StaffType">
+          <End Role="StaffType" Type="Self.StaffType" Multiplicity="1" />
+          <End Role="StaffPosition" Type="Self.StaffPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StaffPosition">
+              <PropertyRef Name="StaffTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_SupplierType">
+          <End Role="SupplierType" Type="Self.SupplierType" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="SuppplierTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierOrder_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="SupplierOrder" Type="Self.SupplierOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierOrder">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierOrderDetail_SupplierOrder">
+          <End Role="SupplierOrder" Type="Self.SupplierOrder" Multiplicity="1" />
+          <End Role="SupplierOrderDetail" Type="Self.SupplierOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierOrder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierOrderDetail">
+              <PropertyRef Name="SupplierOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BootLegEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Meals" EntityType="Self.Meal" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="OrderTypes" EntityType="Self.OrderType" />
+          <EntitySet Name="People" EntityType="Self.Person" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+          <EntitySet Name="ReservationOrders" EntityType="Self.ReservationOrder" />
+          <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <EntitySet Name="StaffPositions" EntityType="Self.StaffPosition" />
+          <EntitySet Name="StaffTypes" EntityType="Self.StaffType" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="SupplierOrders" EntityType="Self.SupplierOrder" />
+          <EntitySet Name="SupplierOrderDetails" EntityType="Self.SupplierOrderDetail" />
+          <EntitySet Name="SupplierTypes" EntityType="Self.SupplierType" />
+          <EntitySet Name="Tables" EntityType="Self.Table" />
+          <AssociationSet Name="FK_OrderDetail_Meal" Association="Self.FK_OrderDetail_Meal">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderType" Association="Self.FK_Order_OrderType">
+            <End Role="OrderType" EntitySet="OrderTypes" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservationOrder_Order" Association="Self.FK_ReservationOrder_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="ReservationOrder" EntitySet="ReservationOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_Person" Association="Self.FK_Reservation_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Person" Association="Self.FK_Staff_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Person" Association="Self.FK_Supplier_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierOrderDetail_Product" Association="Self.FK_SupplierOrderDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="SupplierOrderDetail" EntitySet="SupplierOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_Table" Association="Self.FK_Reservation_Table">
+            <End Role="Table" EntitySet="Tables" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservationOrder_Reservation" Association="Self.FK_ReservationOrder_Reservation">
+            <End Role="Reservation" EntitySet="Reservations" />
+            <End Role="ReservationOrder" EntitySet="ReservationOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_StaffPosition" Association="Self.FK_Staff_StaffPosition">
+            <End Role="StaffPosition" EntitySet="StaffPositions" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffPosition_StaffType" Association="Self.FK_StaffPosition_StaffType">
+            <End Role="StaffType" EntitySet="StaffTypes" />
+            <End Role="StaffPosition" EntitySet="StaffPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_SupplierType" Association="Self.FK_Supplier_SupplierType">
+            <End Role="SupplierType" EntitySet="SupplierTypes" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierOrder_Supplier" Association="Self.FK_SupplierOrder_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierOrder" EntitySet="SupplierOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierOrderDetail_SupplierOrder" Association="Self.FK_SupplierOrderDetail_SupplierOrder">
+            <End Role="SupplierOrder" EntitySet="SupplierOrders" />
+            <End Role="SupplierOrderDetail" EntitySet="SupplierOrderDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BootLegModelStoreContainer" CdmEntityContainer="BootLegEntities">
+          <EntitySetMapping Name="Meals">
+            <EntityTypeMapping TypeName="BootLegModel.Meal">
+              <MappingFragment StoreEntitySet="Meal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MealTypeId" ColumnName="MealTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="BootLegModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderTypeId" ColumnName="OrderTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="BootLegModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="MealId" ColumnName="MealId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderTypes">
+            <EntityTypeMapping TypeName="BootLegModel.OrderType">
+              <MappingFragment StoreEntitySet="OrderType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="BootLegModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="BootLegModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Descripton" ColumnName="Descripton" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="BootLegModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="TableId" ColumnName="TableId" />
+                <ScalarProperty Name="SittingTime" ColumnName="SittingTime" />
+                <ScalarProperty Name="PartySize" ColumnName="PartySize" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReservationOrders">
+            <EntityTypeMapping TypeName="BootLegModel.ReservationOrder">
+              <MappingFragment StoreEntitySet="ReservationOrder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ReservationId" ColumnName="ReservationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="BootLegModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HourlyRate" ColumnName="HourlyRate" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffPositions">
+            <EntityTypeMapping TypeName="BootLegModel.StaffPosition">
+              <MappingFragment StoreEntitySet="StaffPosition">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="StaffTypeId" ColumnName="StaffTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffTypes">
+            <EntityTypeMapping TypeName="BootLegModel.StaffType">
+              <MappingFragment StoreEntitySet="StaffType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="BootLegModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="SuppplierTypeId" ColumnName="SuppplierTypeId" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierOrders">
+            <EntityTypeMapping TypeName="BootLegModel.SupplierOrder">
+              <MappingFragment StoreEntitySet="SupplierOrder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierOrderDetails">
+            <EntityTypeMapping TypeName="BootLegModel.SupplierOrderDetail">
+              <MappingFragment StoreEntitySet="SupplierOrderDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="SupplierOrderID" ColumnName="SupplierOrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierTypes">
+            <EntityTypeMapping TypeName="BootLegModel.SupplierType">
+              <MappingFragment StoreEntitySet="SupplierType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="BootLegModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
