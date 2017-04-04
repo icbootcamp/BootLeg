@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "ReservationOrderView";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<div id="list-inject">
+    <h1>1324567890</h1>
+</div>
+<h1>13245678912313120</h1>
+<script>
+    function ReservationOrderList()
+    {
+        $.ajax({
+            url: '/Reservation/ReservationOrderList',
+            type: 'get',
+            success: function (result) {
+                $("#list-inject").html(result)
+            }
+        })
+    }
+
+    $("document").ready(function () {ReservationOrderList});
+</script>
+

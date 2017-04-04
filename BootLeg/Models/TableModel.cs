@@ -23,6 +23,6 @@ namespace BootLeg.Models
     public class TableEntryModel : TableModel
     {
         [Display(Name = "OpinSeats")]
-        public List<SelectListItem> OpinSeats = new List<SelectListItem>();
+        public List<SelectListItem> OpinSeats { get; set; }
     }
 }
