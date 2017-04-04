@@ -1,0 +1,16 @@
+﻿@model Order
+@{
+    Layout = null;
+}
+
+<h2>EditOrder</h2>
+
+<form action="/Order/EditOrder"method="post" id="Form"></form>
+
+<p>@Html.LabelFor(x => x.Id)</p>
+<p>@Html.EditorFor(x => x.Id)</p>
+
+<p>@Html.LabelFor(x => x.OrderTypeId)</p>
+<p>@Html.EditorFor(x => x.OrderTypeId)</p>
+
+<button type="submit" form="Form" value="Submit">Edit</button>

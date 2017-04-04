@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -41,7 +41,14 @@ namespace BootLeg.Models
         public string Type { get; set; }
         [Display(Name = "Staff Id")]
         public int StaffId { get; set; }
+        [Display(Name = "Staff Type Id")]
+        public int StaffTypeId { get; set; }
+        [Display(Name = "Staff Position Id")]
+        public int StaffPositionId { get; set; }
 
+
+        public List<SelectListItem> sType { get; set; }
+        public List<SelectListItem> sPosition { get; set; }
     }
 
   

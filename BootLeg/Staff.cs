@@ -14,18 +14,11 @@ namespace BootLeg
     
     public partial class Staff
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Staff()
-        {
-            this.StaffPositions = new HashSet<StaffPosition>();
-        }
-    
         public int Id { get; set; }
         public decimal HourlyRate { get; set; }
         public System.DateTime HireDate { get; set; }
     
         public virtual Person Person { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StaffPosition> StaffPositions { get; set; }
+        public virtual StaffPosition StaffPosition { get; set; }
     }
 }

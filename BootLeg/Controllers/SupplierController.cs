@@ -16,7 +16,7 @@ namespace BootLeg.Controllers
         public ActionResult SupplierName()
             
         {
-            var supplierName = db.Suppliers;
+            var supplierName = db.Suppliers.ToList();
 
 
             return View(supplierName.ToList());
