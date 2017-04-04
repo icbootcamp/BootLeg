@@ -13,11 +13,11 @@
         </tr>
         <tr>
             <td>@Html.LabelFor(x => x.ReservationId)</td>
-            <td>@Html.DropDownListFor(x => x.ReservationId, Model.ReservationList)</td>
+            <td>@Html.DropDownListFor(x => x.ReservationId, Model.ReservationList, "Please select")</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(x => x.OrderId)</td>
-            <td>@Html.DropDownListFor(x => x.OrderList, Model.OrderList)</td>
+            <td>@Html.DropDownListFor(x => x.OrderList, Model.OrderList, "Please select")</td>
         </tr>
 
     </table>

@@ -15,11 +15,11 @@
             </tr>
             <tr>
                 <td>@Html.LabelFor(x => x.PersonId)</td>
-                <td>@Html.DropDownListFor(x => x.PersonId, Model.PersonList)</td>
+                <td>@Html.DropDownListFor(x => x.PersonId, Model.PersonList,"Please select")</td>
             </tr>
             <tr>
                 <td>@Html.LabelFor(x => x.TableId)</td>
-                <td>@Html.DropDownListFor(x => x.TableId, Model.TableList)</td>
+                <td>@Html.DropDownListFor(x => x.TableId, Model.TableList, "Please select")</td>
             </tr>
             <tr>
                 <td>@Html.LabelFor(x => x.SittingTime)</td>
@@ -27,7 +27,7 @@
             </tr>
             <tr>
                 <td>@Html.LabelFor(x => x.PartySize)</td>
-                <td>@Html.DropDownListFor(x => x.PartySize, Model.PartySizeList)</td>
+                <td>@Html.DropDownListFor(x => x.PartySize, Model.PartySizeList, "Please select")</td>
             </tr>
         }
         </table>
