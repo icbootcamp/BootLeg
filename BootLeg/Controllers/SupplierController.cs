@@ -74,9 +74,16 @@ namespace BootLeg.Controllers
         {
             return Json(new { success = true});
         }
-    
 
+        private class BootLegEntities
+        {
+            public BootLegEntities()
+            {
+            }
+
+            public object People { get; internal set; }
         }
+    }
 
 
 
