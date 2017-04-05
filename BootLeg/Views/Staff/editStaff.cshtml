@@ -1,39 +1,120 @@
 ﻿@model BootLeg.Models.StaffModel
 @{
     ViewBag.Title = "editStaff";
+    Layout = null;
 
 }
 
 
-<h2>editStaff</h2>
+<h2>Edit Staff</h2>
+
 
 <table>
-@using (Html.BeginForm())
-{
-    <tr>
-        <td>
-            @Html.LabelFor(m => m.Position)
-        </td>
-        <td>
-            @Html.TextBoxFor(m => m.Position)
-        </td>
-
-    </tr>
-     
-        
-
-
-
+    @using (Html.BeginForm())
+    {
         <tr>
             <td>
-                <input type="submit" />
+                @Html.LabelFor(m => m.StaffId)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.StaffId)
             </td>
         </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.FirstName)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.FirstName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.LastName)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.LastName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Address1)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Address1)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Address2)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Address2)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.PhoneNumber)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.PhoneNumber)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.MobileNumber)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.MobileNumber)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.EmailAddress)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.EmailAddress)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.HourlyRate)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.HourlyRate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.HireDate)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.HireDate)
+            </td>
+        </tr>
+       
+    <tr>
+        <td>
+            @Html.LabelFor(x => x.Position)
+            <td>
+            @Html.DropDownListFor(x => x.Position , Model.sPosition)
+        </td>
+    </tr>
 
+    <tr>
+        <td>
+            @Html.LabelFor(x => x.Type)
+        <td>
+            @Html.DropDownListFor(x => x.Type, Model.sType)
+        </td>
+    </tr>
 
-}
+    }
 
 </table>
+
+
+
 
 
 

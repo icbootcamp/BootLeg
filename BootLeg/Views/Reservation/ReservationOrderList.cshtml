@@ -1,0 +1,30 @@
+﻿@model List<BootLeg.Models.ReservationOrderModel>
+@{
+    ViewBag.Title = "ReservationOrderList";
+}
+<body>
+    <h2>ReservationOrderList</h2>
+    <button class="add-reserOrder-button btn btn-success">Add new Reservation Order</button>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>Reservation ID</td>
+            <td>Order ID</td>
+            <td>&nbsp;</td>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td id="dataid">@x.Id</td>
+                <td id="dataresid">@x.ReservationId</td>
+                <td id="dataorderid">@x.OrderId</td>
+                <td>
+                    <button class="edit-reserOrder-button btn btn-warning">Edit</button>
+                    <button class="remove-reserOrder-button btn btn-danger">Remove</button>
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+
+

@@ -1,0 +1,51 @@
+﻿@model BootLeg.Models.OrderViewModel
+@{
+
+   
+   
+}
+
+<h2>Order</h2>
+<a href="/Order/AddOrder">Add</a>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<table>
+
+    <tr>
+        <th>Id</th>
+        <th>OrderTypeId</th>     
+    </tr>
+   
+    @foreach (BootLeg.Order m in Model.order)
+    {
+        <tr>
+            <td>@m.Id</td>
+            <td>@m.OrderTypeId</td>
+            <td>
+                
+                <a href='/Order/EditOrder?Id=@m.Id'>Edit</a>            
+
+           </td>
+           
+        </tr>
+    }
+
+
+</table>
