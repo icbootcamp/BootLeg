@@ -16,6 +16,68 @@
             type: 'get',
             success: function (result) {
                 $("#list-inject").html(result)
+
+                $(".remove-table-button").click(function () {
+                    var thisId = $(this).parents("tr").find("#dataid").text();
+                    $.ajax({
+                        url: '/Reservation/ReservationOrderRemove',
+                        type: 'post',
+                        data: {Id : thisId},
+                        success: function (result) {
+                            ReservationOrderList()
+                        }
+                    })
+                })
+
+                $(".add-table-button").click(function () {
+                    var thisId = 0;
+                    SaveUpdatePopup(thisId, "Add", "Add new Reservation Order");
+                })
+
+                $(".edit-table-button").click(function () {
+                    var thisId = $(this).parents("tr").find("#dataid").text();
+                    SaveUpdatePopup(thisId, "Update", "Update Reservation Order");
+                })
+
+                function SaveUpdatePopup(thisId, saveText, modalText ){
+                    $.ajax({
+                        url: 'Reservation/ReservationOrderEntry',
+                        type: 'post',
+                        data: { Id: thisId },
+                        success: function (result) {
+                            PopShow(result, "Add", "Add new Reservation Order");
+                            $(".save-changes-btn").click(
+                                function () { SaveUpdateBtnClick('/Reservation/ReservationOrderEntid') })
+                        }
+
+                    })
+                }
+                function SaveUpdateBtnClick(actionUrl) {
+                    var x = $("#edit-student-form").serialize();
+                    $.ajax(
+                            {
+                                url: actionUrl,
+                                type: 'post',
+                                data: x,
+                                success: function (result) {
+
+                                    $(".modal-title").val("");
+                                    $("#Pop-model").modal("hide");
+                                    tableListLoad();
+                                }
+                            }
+                        )
+                }
+
+                function PopShow(result, saveText, modalText) {
+                    $("#edit-student-form").html(result);
+
+                    $(".close-btn").html("Cancel");
+                    $(".save-changes-btn").html(saveText);
+
+                    $(".modal-title").text(modalText);
+                    $("#craigs-model").modal("show");
+                }
             }
         })
     }
