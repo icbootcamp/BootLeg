@@ -1,0 +1,34 @@
+﻿@model BootLeg.Models.ReservationEntryModel
+@{
+    ViewBag.Title = "ReservationEntryView";
+}
+
+
+<body>
+<h2>ReservationEntryView</h2>
+    <table>
+        @using (Html.BeginForm())
+        { 
+            <tr hidden="hidden">
+                <td>@Html.LabelFor(x => x.Id)</td>
+                <td>@Html.TextBoxFor(x => x.Id)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.PersonId)</td>
+                <td>@Html.DropDownListFor(x => x.PersonId, Model.PersonList,"Please select")</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.TableId)</td>
+                <td>@Html.DropDownListFor(x => x.TableId, Model.TableList, "Please select")</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.SittingTime)</td>
+                <td><input type="datetime" value=@Model.SittingTime></td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.PartySize)</td>
+                <td>@Html.DropDownListFor(x => x.PartySize, Model.PartySizeList, "Please select")</td>
+            </tr>
+        }
+        </table>
+    </body>
