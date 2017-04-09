@@ -8,46 +8,60 @@
 </div>
 
 <script>
-    $.ajax({
-        url: '/Staff/StaffManagement',
-        type: 'get',
-        success: function (result) {
-            $("#injectHere").html(result);
-            
-            
-            $(".edit-button-press").click(function () {
-                var thisId = $(this).parents("tr").find("#dataid").text();
+    function indexLoad() {
+        $.ajax({
+            url: '/Staff/StaffManagement',
+            type: 'get',
+            success: function (result) {
+                $("#injectHere").html(result);
+
+
+                $(".edit-button-press").click(function () {
+                    var thisId = $(this).parents("tr").find("#dataid").text();
+
+
+
+
+
                     $.ajax({
-                    url: '/Staff/editStaff',
-                    type: 'post',
-                    data: { StaffId : thisId },
-                    success : function(result)
-                    {   
-                        $("#edit-student-form").html(result);
-                        $("#craigs-model").modal("show")
-                        $(".save-changes-btn").click(function(){
-                            
-                            var editS = $("#edit-student-form").serialize();
-                            console.log(editS)
-                            $.ajax({
-                                url: '/Staff/SaveEdit',
-                                type: 'post',
-                                data: editS,
-                                success : function(result){
+                        url: '/Staff/editStaff',
+                        type: 'post',
+                        data: { StaffId: thisId },
+                        success: function (result) {
 
-                                }
-                            })
+                            $("#edit-student-form").html(result);
+                            $("#craigs-model").modal("show")
+                            $(".save-changes-btn").click(function () {
+
+                                var editS = $("#edit-student-form").serialize();
+                                console.log(editS)
+
+
+
+
+
+                                $.ajax({
+                                    url: '/Staff/SaveEdit',
+                                    type: 'post',
+                                    data: editS,
+                                    success: function (result) {
+                                        $("#craigs-model").modal("hide")
+                                        indexLoad();
+                                    }
+                                })
+                            }
+
+
+                        )
+
                         }
-                       
-                       
-                    )
-
-                    }
-                })
+                    })
+                }
+                )
             }
-            )}
-    })
-    
+        })
+    }
+    $("document").ready(indexLoad());
 </script>
 
 
