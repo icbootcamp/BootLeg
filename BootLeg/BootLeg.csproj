@@ -184,6 +184,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BootLegModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AbstractBootLegController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="Models\MealModel.cs" />
     <Compile Include="Models\OrderTypeModel.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="Models\ReservationOrderModel.cs" />
     <Compile Include="Models\ReservationViewModel.cs" />
     <Compile Include="Models\StaffListModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
@@ -333,6 +335,7 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DBPopulate.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -363,6 +366,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="SQL\BootLeg.sql" />
+    <Content Include="SQL\BootLeg_201704041230.sql" />
     <Content Include="SQL\DBPopulate.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -407,10 +411,18 @@
     <Content Include="Views\Staff\editStaff.cshtml" />
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Staff\StaffManagement.cshtml" />
+    <Content Include="Views\Reservation\ReservationEntryView.cshtml" />
+    <Content Include="Views\Reservation\ReservationList.cshtml" />
+    <Content Include="Views\Reservation\ReservationOrderEntry.cshtml" />
+    <Content Include="Views\Reservation\ReservationOrderList.cshtml" />
+    <Content Include="Views\Reservation\ReservationOrderView.cshtml" />
+    <Content Include="Views\Reservation\ReservationView.cshtml" />
+    <Content Include="Views\Reservation\TableEntryView.cshtml" />
+    <Content Include="Views\Reservation\TableList.cshtml" />
+    <Content Include="Views\Reservation\TableView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Reservation\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

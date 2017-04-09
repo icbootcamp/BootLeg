@@ -143,7 +143,10 @@ namespace BootLeg.Controllers
         {
             return View();
         }
-
+        public ActionResult ReservationOrderView()
+        {
+            return View();
+        }
         public ActionResult ReservationList()
         {
             var modelLst = (from r in db.Reservations
