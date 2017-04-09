@@ -5,8 +5,9 @@
 
 }
 
-
 <h2>Edit Staff</h2>
+
+
 
 
 <table>
@@ -97,7 +98,7 @@
         <td>
             @Html.LabelFor(x => x.Position)
             <td>
-            @Html.DropDownListFor(x => x.Position , Model.sPosition)
+            @Html.DropDownListFor(x => x.StaffPositionId, Model.sPosition)
         </td>
     </tr>
 
@@ -105,7 +106,7 @@
         <td>
             @Html.LabelFor(x => x.Type)
         <td>
-            @Html.DropDownListFor(x => x.Type, Model.sType)
+            @Html.DropDownListFor(x => x.StaffTypeId, Model.sType)
         </td>
     </tr>
 

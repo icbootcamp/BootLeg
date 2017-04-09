@@ -4,9 +4,45 @@
     Layout = null;
 }
 
-<h2>StaffManagement</h2>
+<h2>StaffManagement</h2> 
+
+<button class="add-button-press btn-primary">New Staff</button>
 
 
+<style>
+
+ 
+    body{
+        background-color : lightblue;
+    }
+
+    h2 {
+        color :indigo;
+        text-align: center;
+        font-size: 50px;
+        font-family : Arial;
+        font-style : italic;
+        font-weight : 100;
+        
+    }
+
+    tr {
+       
+        color: blue;
+        text-align: center;   
+    }
+
+    th {
+        
+        color: rebeccapurple;
+        text-align: center;
+        font-size: 25px;
+        font-family : Arial;
+        font-style : normal;
+        
+    }
+
+</style>
 <table class="table table-bordered table-striped">
 
     <tr>
@@ -30,7 +66,7 @@
             <td>@sm.HireDate</td>
             <td>@sm.Position</td>
             <td>@sm.Type</td>
-            <td><button class="edit-button-press btn-success">Edit</button></td>
+            <td><button class="edit-button-press btn-primary well well-sm" >Edit</button></td>
         </tr>
 
     }

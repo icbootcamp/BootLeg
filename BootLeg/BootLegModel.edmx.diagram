@@ -5,37 +5,37 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="34fc25c79d004a5d8346e78db1e626c2" Name="Diagram1">
-        <EntityTypeShape EntityType="BootLegModel.Meal" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.Order" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.OrderDetail" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.OrderType" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.Person" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.Product" Width="1.5" PointX="8.25" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.Reservation" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.ReservationOrder" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.Staff" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.StaffPosition" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.StaffType" Width="1.5" PointX="1.5" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.Supplier" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.SupplierOrder" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.SupplierOrderDetail" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.SupplierType" Width="1.5" PointX="3.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="BootLegModel.Table" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
-        <AssociationConnector Association="BootLegModel.FK_OrderDetail_Meal" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_Order_OrderType" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_OrderDetail_Order" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_ReservationOrder_Order" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_Reservation_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_Staff_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_Supplier_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_SupplierOrderDetail_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_Reservation_Table" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_ReservationOrder_Reservation" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_Staff_StaffPosition" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_StaffPosition_StaffType" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_Supplier_SupplierType" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_SupplierOrder_Supplier" ManuallyRouted="false" />
-        <AssociationConnector Association="BootLegModel.FK_SupplierOrderDetail_SupplierOrder" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BootLegModel.Meal" Width="1.5" PointX="6" PointY="11.75" />
+        <EntityTypeShape EntityType="BootLegModel.Order" Width="1.5" PointX="6" PointY="14.75" />
+        <EntityTypeShape EntityType="BootLegModel.OrderDetail" Width="1.5" PointX="8.25" PointY="14.75" />
+        <EntityTypeShape EntityType="BootLegModel.OrderType" Width="1.5" PointX="3.75" PointY="15" />
+        <EntityTypeShape EntityType="BootLegModel.Person" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="BootLegModel.Product" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="BootLegModel.Reservation" Width="1.5" PointX="6" PointY="4.5" />
+        <EntityTypeShape EntityType="BootLegModel.ReservationOrder" Width="1.5" PointX="8.25" PointY="4.75" />
+        <EntityTypeShape EntityType="BootLegModel.Staff" Width="1.5" PointX="3" PointY="1.625" />
+        <EntityTypeShape EntityType="BootLegModel.StaffPosition" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BootLegModel.StaffType" Width="1.5" PointX="1.5" PointY="9" />
+        <EntityTypeShape EntityType="BootLegModel.Supplier" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="BootLegModel.SupplierOrder" Width="1.5" PointX="5.25" PointY="8.625" />
+        <EntityTypeShape EntityType="BootLegModel.SupplierOrderDetail" Width="1.5" PointX="7.5" PointY="8.5" />
+        <EntityTypeShape EntityType="BootLegModel.SupplierType" Width="1.5" PointX="0.75" PointY="12" />
+        <EntityTypeShape EntityType="BootLegModel.Table" Width="1.5" PointX="3.75" PointY="11.75" />
+        <AssociationConnector Association="BootLegModel.FK_OrderDetail_Meal" />
+        <AssociationConnector Association="BootLegModel.FK_Order_OrderType" />
+        <AssociationConnector Association="BootLegModel.FK_OrderDetail_Order" />
+        <AssociationConnector Association="BootLegModel.FK_ReservationOrder_Order" />
+        <AssociationConnector Association="BootLegModel.FK_Reservation_Person" />
+        <AssociationConnector Association="BootLegModel.FK_Staff_Person" />
+        <AssociationConnector Association="BootLegModel.FK_Supplier_Person" />
+        <AssociationConnector Association="BootLegModel.FK_SupplierOrderDetail_Product" />
+        <AssociationConnector Association="BootLegModel.FK_Reservation_Table" />
+        <AssociationConnector Association="BootLegModel.FK_ReservationOrder_Reservation" />
+        <AssociationConnector Association="BootLegModel.FK_Staff_StaffPosition" />
+        <AssociationConnector Association="BootLegModel.FK_StaffPosition_StaffType" />
+        <AssociationConnector Association="BootLegModel.FK_Supplier_SupplierType" />
+        <AssociationConnector Association="BootLegModel.FK_SupplierOrder_Supplier" />
+        <AssociationConnector Association="BootLegModel.FK_SupplierOrderDetail_SupplierOrder" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
