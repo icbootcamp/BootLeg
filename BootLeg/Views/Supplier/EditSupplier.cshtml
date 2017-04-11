@@ -1,0 +1,12 @@
+﻿@model BootLeg.Models.SupplierModel
+    @{ 
+
+        ViewBag.Title = "EditSupplier";
+        Layout = null;
+    }
+
+<h2>Edit Supplier</h2>
+
+@Html.TextBoxFor(m => m.Id)
+@Html.TextBoxFor(m => m.CompanyName)
+@Html.TextBoxFor(m => m.FirstName)

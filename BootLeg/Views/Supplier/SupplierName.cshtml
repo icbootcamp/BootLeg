@@ -1,49 +1,49 @@
-﻿
+﻿@model List<BootLeg.Models.SupplierModel>
 @{
-    ViewBag.Title = "supplierName";
+    ViewBag.Title = "SupplierName";
 }
 
 <h2>SupplierName</h2>
 
-<a href="~/Views/Supplier/AddSupplierView.cshtml">Add</a>
 
-<table class="table table-bordered table-striped">
-    <tr>
-        <th>
-            Company Name
-        </th>
-        <th>
-            Address 1
-        </th>
-        <th>
-            Address 2
-        </th>
-        <th>
-            Email Address
-        </th>
-        <th>
-            Supplier Type
-        </th>
-    </tr>
-    @foreach (Supplier sn in Model)
-        {
+<div>
+    <div>
+        <table class="table table-bordered table-striped">
             <tr>
-                <td>
-                    @sn.CompanyName
-                </td>
+                <th>Company Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address 1</th>
+                <th>Address 2</th>
+                <th>Phone Number</th>
+                <th>Mobile Number</th>
+                <th>Email Address</th>
                 
-                <td>
-                    @sn.Person.Address1
-                </td>
-                <td>
-                    @sn.Person.Address2
-                </td>
-                <td>
-                @sn.Person.EmailAddress
-               </td>
-                <td>
-                    @sn.SupplierType.Name
-                </td>
+                <th>Credit Limit</th>
+                <th></th>
             </tr>
-        }
-</table>
+
+            @foreach (var s in Model)
+            {
+                <tr>
+                    
+                       
+                    <td>@s.CompanyName</td>
+                    <td>@s.FirstName</td>
+                    <td>@s.LastName</td>
+                    <td>@s.Address1</td>
+                    <td>@s.Address2</td>
+                    <td>@s.PhoneNumber</td>
+                    <td>@s.MobileNumber</td>
+                    <td>@s.EmailAddress</td>
+                    <td>@s.CreditLimit</td>
+                    <td><button class="Edit">Edit</button></td>
+                </tr>
+            }
+        </table>
+        <div> @Html.ActionLink("Edit", "EditSupplier")</div>
+    </div>
+</div>
+<div id="injecthere">
+
+</div>
