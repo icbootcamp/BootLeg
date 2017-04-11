@@ -184,9 +184,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BootlegEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AbstractBootLegController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,6 +200,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MealModel.cs" />
+    <Compile Include="Models\ReservationOrderModel.cs" />
     <Compile Include="Models\ReservationViewModel.cs" />
     <Compile Include="Models\StaffListModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
@@ -333,6 +336,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootLegJS.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ClassDiagram1.cd" />
@@ -347,6 +351,7 @@
     <Content Include="BootlegEntities.edmx.diagram">
       <DependentUpon>BootlegEntities.edmx</DependentUpon>
     </Content>
+    <Content Include="ClassDiagram2.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -358,6 +363,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Views\Shared\LayoutInject.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="SQL\BootLeg.sql" />
     <Content Include="SQL\DBPopulate.sql" />
@@ -408,6 +414,13 @@
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Staff\StaffManagement.cshtml" />
     <Content Include="Views\Supplier\EditSupplier.cshtml" />
+    <Content Include="Views\Reservation\ReservationEntryView.cshtml" />
+    <Content Include="Views\Reservation\ReservationList.cshtml" />
+    <Content Include="Views\Reservation\ReservationOrderEntry.cshtml" />
+    <Content Include="Views\Reservation\ReservationOrderList.cshtml" />
+    <Content Include="Views\Reservation\ReservationOrderView.cshtml" />
+    <Content Include="Views\Reservation\ReservationView.cshtml" />
+    <Content Include="Views\Reservation\TableEntryView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
