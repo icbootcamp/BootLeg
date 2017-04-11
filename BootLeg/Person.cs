@@ -12,20 +12,26 @@ namespace BootLeg
     using System;
     using System.Collections.Generic;
     
-    public partial class StaffPosition
+    public partial class Person
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public StaffPosition()
+        public Person()
         {
-            this.Staffs = new HashSet<Staff>();
+            this.Reservations = new HashSet<Reservation>();
         }
     
         public int Id { get; set; }
-        public string Position { get; set; }
-        public int StaffTypeId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string PhoneNumber { get; set; }
+        public string MobileNumber { get; set; }
+        public string EmailAddress { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Staff> Staffs { get; set; }
-        public virtual StaffType StaffType { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual Staff Staff { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }

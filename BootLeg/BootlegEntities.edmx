@@ -81,22 +81,23 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="HourlyRate" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="HourlyRate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="HireDate" Type="date" Nullable="false" />
+          <Property Name="StaffPositionId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="StaffPosition">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Position" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Position" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="StaffTypeId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="StaffType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Type" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Supplier">
@@ -241,13 +242,13 @@
         </Association>
         <Association Name="FK_Staff_StaffPosition">
           <End Role="StaffPosition" Type="Self.StaffPosition" Multiplicity="1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StaffPosition">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Staff">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="StaffPositionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -498,8 +499,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="HourlyRate" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="HourlyRate" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StaffPositionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Person" Relationship="Self.FK_Staff_Person" FromRole="Staff" ToRole="Person" />
           <NavigationProperty Name="StaffPosition" Relationship="Self.FK_Staff_StaffPosition" FromRole="Staff" ToRole="StaffPosition" />
         </EntityType>
@@ -507,17 +509,17 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Position" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="StaffTypeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_StaffPosition" FromRole="StaffPosition" ToRole="Staff" />
+          <NavigationProperty Name="Staffs" Relationship="Self.FK_Staff_StaffPosition" FromRole="StaffPosition" ToRole="Staff" />
           <NavigationProperty Name="StaffType" Relationship="Self.FK_StaffPosition_StaffType" FromRole="StaffPosition" ToRole="StaffType" />
         </EntityType>
         <EntityType Name="StaffType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="StaffPositions" Relationship="Self.FK_StaffPosition_StaffType" FromRole="StaffType" ToRole="StaffPosition" />
         </EntityType>
@@ -696,13 +698,13 @@
         </Association>
         <Association Name="FK_Staff_StaffPosition">
           <End Role="StaffPosition" Type="Self.StaffPosition" Multiplicity="1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StaffPosition">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Staff">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="StaffPositionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -923,6 +925,7 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="HourlyRate" ColumnName="HourlyRate" />
                 <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="StaffPositionId" ColumnName="StaffPositionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

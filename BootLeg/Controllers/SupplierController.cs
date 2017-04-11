@@ -11,8 +11,6 @@ namespace BootLeg.Controllers
 {
     public class SupplierController : Controller
     {
-        // GET: Supplier
-
         BootLegEntities db = new BootLegEntities();
 
         public ActionResult SupplierName()
@@ -46,48 +44,14 @@ namespace BootLeg.Controllers
             return View(supplierName);
         }
 
-        public ActionResult EditSupplier(int personId)
-
-        {
-            var supplierEdit = db.People.Find(personId);
-            var supplier = db.Suppliers.ToList();
-            SupplierModel model = new SupplierModel
-            {
-                Id = supplierEdit.Id,
-                CompanyName = supplierEdit.Supplier.CompanyName,
-                FirstName = supplierEdit.FirstName,
-                LastName = supplierEdit.LastName,
-                Address1 = supplierEdit.Address1,
-                Address2 = supplierEdit.Address2,
-                PhoneNumber = supplierEdit.PhoneNumber,
-                MobileNumber = supplierEdit.MobileNumber,
-                EmailAddress = supplierEdit.EmailAddress,
-                CreditLimit = supplierEdit.Supplier.CreditLimit,
 
 
-            };   
-
-            return View(model);
-        } 
-        
-        public ActionResult SaveEdit (SupplierModel model)
-        {
-            return Json(new { success = true});
-        }
-
-        private class BootLegEntities
-        {
-            public BootLegEntities()
-            {
-            }
-
-            public object People { get; internal set; }
         }
     }
 
 
 
-        }            
+                   
 
 
         

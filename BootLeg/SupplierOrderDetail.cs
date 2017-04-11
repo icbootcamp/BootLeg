@@ -12,14 +12,15 @@ namespace BootLeg
     using System;
     using System.Collections.Generic;
     
-    public partial class Staff
+    public partial class SupplierOrderDetail
     {
         public int Id { get; set; }
-        public decimal HourlyRate { get; set; }
-        public System.DateTime HireDate { get; set; }
-        public int StaffPositionId { get; set; }
+        public int ProductId { get; set; }
+        public decimal Cost { get; set; }
+        public int Qty { get; set; }
+        public int SupplierOrderID { get; set; }
     
-        public virtual Person Person { get; set; }
-        public virtual StaffPosition StaffPosition { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual SupplierOrder SupplierOrder { get; set; }
     }
 }
