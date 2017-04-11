@@ -7,6 +7,27 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <style>
+        ul li:hover .erji_ul {display:block;}
+        .dropdown {
+            position:relative;
+            display:inline-block;
+        }
+        .dropdown-content {
+            display:none;
+            position:absolute;
+            background-color:#f9f9f9;
+            min-width:160px;
+            box-shadow:0px 32px 128px 0px rgba(0,0,0,0.2);
+            padding:12px 16px;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .phg {
+            color:white;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,10 +46,16 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("SupplierName", "SupplierName", "Supplier")</li>
-                    <li>@Html.ActionLink("OrderManagement", "ReservationController", "Order")</li>
-                    <li>@Html.ActionLink("Table Management", "ReservationController", "Order")</li>
-                    <li>@Html.ActionLink("Reservation Management", "ReservationController", "Order")</li>
-                    <li>@Html.ActionLink("Reservation Order Management", "ReservationController", "Order")</li>
+                    <li>@Html.ActionLink("OrderManagement", "Index", "Order")</li>
+                    <li class="dropdown">
+                        <p class="phg">Reservation</p>
+                        <ul class="dropdown-content">
+                            <li class="erji">@Html.ActionLink("Table Management", "TableView", "Reservation")</li>
+                            <li class="erji">@Html.ActionLink("Reservation Management", "ReservationView", "Reservation")</li>
+                            <li class="erji">@Html.ActionLink("Reservation Order Management", "ReservationOrderView", "Reservation")</li>
+                        </ul>
+                        
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -52,7 +79,7 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-
+    </div><!-- /.container -->
         
     @RenderBody()
     <hr />
