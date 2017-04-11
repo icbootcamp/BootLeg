@@ -1,11 +1,12 @@
 ﻿@model List<BootLeg.Models.ReservationOrderModel>
 @{
     ViewBag.Title = "ReservationOrderList";
+    Layout = null;
 }
 <body>
     <h2>ReservationOrderList</h2>
-    <button class="add-reserOrder-button btn btn-success">Add new Reservation Order</button>
-    <table>
+    <div><button class="add-reserOrder-button btn btn-success">Add new Reservation Order</button></div><br />
+    <table class="table table-bordered table-striped">
         <tr>
             <td>ID</td>
             <td>Reservation ID</td>
@@ -19,8 +20,8 @@
                 <td id="dataresid">@x.ReservationId</td>
                 <td id="dataorderid">@x.OrderId</td>
                 <td>
-                    <button class="edit-reserOrder-button btn btn-warning">Edit</button>
-                    <button class="remove-reserOrder-button btn btn-danger">Remove</button>
+                    <button class="edit-reserOrder-button btn btn-primary">Edit</button>
+                    <button class="remove-reserOrder-button btn btn-warning">Remove</button>
                 </td>
             </tr>
         }

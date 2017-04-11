@@ -40,17 +40,16 @@ namespace BootLeg.Controllers
         }
         public ActionResult TableRemove(int Id)
         {
-            Console.WriteLine("{0} has been delete from database", Id);
             var rmTable = db.Tables.Find(Id);
             db.Tables.Remove(rmTable);
             db.SaveChanges();
 
             return RedirectToAction("TableView", "Reservation");
         }
-        public ActionResult TableEntryView(int Idd)
+        public ActionResult TableEntryView(int Id)
         {
             TableEntryModel model;
-            if (Idd == 0)
+            if (Id == 0)
             {
                 model = new TableEntryModel
                 {
@@ -63,7 +62,7 @@ namespace BootLeg.Controllers
             }
             else
             {
-                model = db.Tables.Where(x => x.Id == Idd).Select(x => 
+                model = db.Tables.Where(x => x.Id == Id).Select(x => 
                                 new TableEntryModel
                                 {
                                     Id = x.Id,
@@ -288,7 +287,8 @@ namespace BootLeg.Controllers
         {
             return db.Reservations.Select(x => new SelectListItem
             {
-                Text = "Reservation No.:" + x.Id + "," + x.Person.Id + " :" + x.Person.LastName + " @:" + x.SittingTime,
+                Text = "Reservation No.: " + x.Id + ", Reserved by: " + x.Person.Id 
+                + " " + x.Person.LastName + " Reserve for: " + x.SittingTime,
                 Value = "" + x.Id
             }).ToList();
         }

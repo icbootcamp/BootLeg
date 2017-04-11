@@ -1,6 +1,7 @@
 ﻿@model BootLeg.Models.ReservationOrderEntryModel
 @{
     ViewBag.Title = "ReservationOrderEntry";
+    Layout = null;
 }
 
 <h2>ReservationOrderEntry</h2>
@@ -17,7 +18,7 @@
         </tr>
         <tr>
             <td>@Html.LabelFor(x => x.OrderId)</td>
-            <td>@Html.DropDownListFor(x => x.OrderList, Model.OrderList, "Please select")</td>
+            <td>@Html.DropDownListFor(x => x.OrderId, Model.OrderList, "Please select")</td>
         </tr>
 
     </table>

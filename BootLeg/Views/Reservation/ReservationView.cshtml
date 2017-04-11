@@ -5,9 +5,8 @@
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <div id="list-inject">
-    <h1>1324567890</h1>
+
 </div>
-<h1>13245678912313120</h1>
 <script>
     function reservationListLoad()
     {
@@ -17,82 +16,28 @@
                 success: function (result)
                 {
                     $("#list-inject").html(result);
-                    $(".add-Reservation-button").click
-                    (
-                        function()
-                        {
-                            ReservationEntry(0)
-                        }
-                        
-                    )
-                    $(".edit-reservation-btn").click
-                    (
-                        function () {
+
+                    $(".add-Reservation-button").click(function(){
+                            saveUpdatePopup('/Reservation/ReservationEntryView'
+                               , 0, "Add", "Add New Reservation"
+                               , '/Reservation/ReservationEntied'
+                               , reservationListLoad);
+                    })
+
+                    $(".edit-reservation-btn").click (function () {
                             var recordId = $(this).parents("tr").find("#dataid").text();
-                            ReservationEntry(recordId)
-                        }
+                            saveUpdatePopup('/Reservation/ReservationEntryView'
+                                , recordId, "Update", "Update Reservation"
+                                , '/Reservation/ReservationEntied'
+                                , reservationListLoad);
+                    })
 
-                    )
-                    $(".remove-reservation-btn").click
-                    (
-                        function ()
-                        {
+                    $(".remove-reservation-btn").click(function (){
                             var recordId = $(this).parents("tr").find("#dataid").text();
-                            reservationRemove(recordId, '/Reservation/ReservationRemove');
-                        }
-                    )
-                    function reservationRemove(reserRecordId, actionUrl)
-                    {
-                        $.ajax({
-                            url: actionUrl,
-                            type: 'post',
-                            data: { Id: reserRecordId },
-                            success: function (result) {
-                                reservationListLoad();
-                            }
-                        })
-                    }
-                    function ReservationEntry(reserRecordId) {
-                        $.ajax({
-                            url: "/Reservation/ReservationEntryView",
-                            type: "post",
-                            data: { rId: reserRecordId },
-                            success: function (result) {
-                                PopShow(result, "Add", "New Reservation");
-                                $(".save-changes-btn").click
-                                     (
-                                        function () { SaveUpdateBtnClick("/Reservation/ReservationEntied") }
-                                     )
-                            }
-                        })
-                    }
-                    function SaveUpdateBtnClick(actionUrl)
-                    {
-                        var x = $("#edit-student-form").serialize();
-                        $.ajax({
-                            url: actionUrl,
-                            type: 'post',
-                            data: x,
-                            success: function (result)
-                            {
-                                $(".modal-title").val("");
-                                $("#Pop-model").modal("hide");
-                                reservationListLoad();
-                            }
+                            removeBtnClick('/Reservation/ReservationRemove'
+                                , recordId, reservationListLoad);
+                    })
 
-                        })
-
-                    }
-                    
-                    function PopShow(result, saveText, modalText) {
-                        $("#edit-student-form").html(result);
-
-                        $(".close-btn").html("Cancel");
-                        $(".save-changes-btn").html(saveText);
-
-                        $(".modal-title").text(modalText);
-                        $("#craigs-model").modal("show");
-                    }
                 }
         })
     }

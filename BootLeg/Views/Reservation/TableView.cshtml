@@ -3,115 +3,39 @@
     ViewBag.Title = "TableView";
 }
 <script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/bootLegJS.js"></script>
 <div id="list-inject">
-    <h1>1324567890</h1>
 </div>
-<h1>13245678912313120</h1>
     <script>
-
-        function tableListLoad()
+    function tableListLoad()
     {
     $.ajax({
                 url: '/Reservation/TableList',
                 type: 'get',
                 success: function (result)
                 {
-
                     $("#list-inject").html(result);
+
                     $(".remove-table-button").click(function (){
                             var thisId = $(this).parents("tr").find("#dataid").text();
-                            alert(thisId);
-                            $.ajax(
-                                    {
-                                        url: '/Reservation/TableRemove',
-                                        type: 'post',
-                                        data: { Id: thisId },
-                                        success: function(result)
-                                        {
-                                            tableListLoad()
-                                        }
-                                    }
-                                )
-                        })
+                            removeBtnClick('/Reservation/TableRemove', thisId, tableListLoad); 
+                    })
 
-                    $(".add-table-button").click
-                    (
-                        function ()
-                        {
-                            var tId = 0;
-                            //alert(tId);
-                            $.ajax(
-                                   {
-                                       url: '/Reservation/TableEntryView',
-                                       type: 'post',
-                                       data: { Idd: tId },
-                                       success: function (result) {
-                                           //console.log(Idd);
-                                           PopShow(result, "Add", "Add New Table");
-                                           $(".save-changes-btn").click
-                                            (
-                                                function () { SaveUpdateBtnClick('/Reservation/TableEntied') }
-                                            )
-                                       }
-                                   }
-                               )
-                           
-                        }
-                    )
-                    $(".edit-table-button").click
-                    (
-                        function ()
-                        {
-                            var selectId = $(this).parents("tr").find("#dataid").text();
-                            $.ajax(
-                                    {
-                                        url: '/Reservation/TableEntryView',
-                                        type: 'post',
-                                        data: { Idd: selectId },
-                                        success: function (result)
-                                        {
-                                            console.log(result);
-                                            PopShow(result, "Update", "Update New Table");
-                                            $(".save-changes-btn").click
-                                           (
-                                                function () { SaveUpdateBtnClick('/Reservation/TableEntied') }
-                                           )
-                                        }
+                    $(".add-table-button").click(function () {
+                        saveUpdatePopup('/Reservation/TableEntryView'
+                            , 0, "Add", "Add New Table"
+                            , '/Reservation/TableEntied'
+                            , tableListLoad);
+                    })
+                    
+                    $(".edit-table-button").click(function (){
+                            var tId = $(this).parents("tr").find("#dataid").text();
+                            saveUpdatePopup('/Reservation/TableEntryView'
+                                , tId, "Update", "Update New Table"
+                                , '/Reservation/TableEntied'
+                                , tableListLoad);
+                    })
 
-                                    }
-                                )
-                        }
-                    )
-
-
-                    function SaveUpdateBtnClick(actionUrl)
-                    {
-                            var x = $("#edit-student-form").serialize();
-                            $.ajax(
-                                    {
-                                        url: actionUrl,
-                                        type: 'post',
-                                        data: x ,
-                                        success: function (result) {
-                                                                  
-
-                                            $(".modal-title").val("");
-                                            $("#Pop-model").modal("hide");
-                                            tableListLoad();
-                                        }
-                                    }
-                                )
-                    }
-                    function PopShow(result, saveText, modalText)
-                    {
-                        $("#edit-student-form").html(result);
-
-                        $(".close-btn").html("Cancel");
-                        $(".save-changes-btn").html(saveText);
-
-                        $(".modal-title").text(modalText);
-                        $("#craigs-model").modal("show");
-                    }
                 }
             })
         }
