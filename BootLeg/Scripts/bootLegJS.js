@@ -38,7 +38,19 @@ function saveUpdateBtnClick(actionUrl, reloadAction) {
             }
         )
 }
+
+function removeComfirm(ActionUrl, thisId, ActionFunction) {
+    {
+        if (confirm('Confirm to delete?')) {
+            removeBtnClick(ActionUrl,thisId, ActionFunction);
+            return true;
+        } return
+            alert("Canceled");
+            false;
+    }
+}
 function removeBtnClick(ActionUrl,thisId, ActionFunction){
+
     $.ajax({
         url: ActionUrl,
         type: 'post',

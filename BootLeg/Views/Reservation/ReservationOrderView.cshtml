@@ -21,15 +21,7 @@
 
                 $(".remove-reserOrder-button").click(function () {
                     var thisId = $(this).parents("tr").find("#dataid").text();
-                    removeBtnClick('/Reservation/ReservationOrderRemove', thisId, ReservationOrderList);
-                    //$.ajax({
-                    //    url: '/Reservation/ReservationOrderRemove',
-                    //    type: 'post',
-                    //    data: {Id : thisId},
-                    //    success: function (result) {
-                    //        ReservationOrderList()
-                    //    }
-                    //})
+                    removeComfirm('/Reservation/ReservationOrderRemove', thisId, ReservationOrderList);
                 })
 
                 $(".add-reserOrder-button").click(

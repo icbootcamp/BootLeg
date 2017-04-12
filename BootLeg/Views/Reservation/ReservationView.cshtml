@@ -34,7 +34,7 @@
 
                     $(".remove-reservation-btn").click(function (){
                             var recordId = $(this).parents("tr").find("#dataid").text();
-                            removeBtnClick('/Reservation/ReservationRemove'
+                            removeComfirm('/Reservation/ReservationRemove'
                                 , recordId, reservationListLoad);
                     })
 

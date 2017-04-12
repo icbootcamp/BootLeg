@@ -16,9 +16,9 @@
                 {
                     $("#list-inject").html(result);
 
-                    $(".remove-table-button").click(function (){
-                            var thisId = $(this).parents("tr").find("#dataid").text();
-                            removeBtnClick('/Reservation/TableRemove', thisId, tableListLoad); 
+                    $(".remove-table-button").click(function () {
+                        var thisId = $(this).parents("tr").find("#dataid").text();
+                        removeComfirm('/Reservation/TableRemove', thisId, tableListLoad);
                     })
 
                     $(".add-table-button").click(function () {
