@@ -17,7 +17,6 @@ namespace BootLeg
         public int Id { get; set; }
         public decimal HourlyRate { get; set; }
         public System.DateTime HireDate { get; set; }
-        public int StaffPositionId { get; set; }
     
         public virtual Person Person { get; set; }
         public virtual StaffPosition StaffPosition { get; set; }

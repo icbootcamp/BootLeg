@@ -7,6 +7,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
         ul li:hover .erji_ul {display:block;}
         .dropdown {
@@ -48,7 +50,9 @@
                     <li>@Html.ActionLink("SupplierName", "SupplierName", "Supplier")</li>
                     <li>@Html.ActionLink("OrderManagement", "Index", "Order")</li>
                     <li class="dropdown">
-                        <p class="phg">Reservation</p>
+                        <a href="#" class="dropdown-toggle"
+                                data-toggle="dropdowm">
+                        Reservation<span class="caret"></span></a>
                         <ul class="dropdown-content">
                             <li class="erji">@Html.ActionLink("Table Management", "TableView", "Reservation")</li>
                             <li class="erji">@Html.ActionLink("Reservation Management", "ReservationView", "Reservation")</li>
